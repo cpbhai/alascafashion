@@ -30,11 +30,11 @@ app.use("/test", (req, res) => {
   res.status(200).json({ success: true, message: "Backend is working fine." });
 });
 
-/*Frontend hai
-app.use(express.static(path.join(__dirname, "../client/build")));
+// /*Frontend hai
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build/index.html"));
-});*/
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, function () {
