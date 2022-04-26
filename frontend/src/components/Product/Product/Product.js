@@ -70,7 +70,9 @@ const Product = () => {
       return dispatch(
         SendNotif("error", "Please select the size , out of available sizes")
       );
-    dispatch(addToCart({ ...product, size, colour }));
+    dispatch(
+      addToCart({ ...product, size, colour, quantity: 1 }, "product-page")
+    );
     dispatch(
       SendNotif("success", `${product.title.slice(0, 20)}... was Added to Cart`)
     );

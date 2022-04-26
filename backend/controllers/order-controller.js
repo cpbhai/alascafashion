@@ -7,7 +7,11 @@ exports.placeOrder = async (req, res) => {
     const order = await orderModel.create(req.body);
     res
       .status(200)
-      .json({ success: true, data: order, message: "Order has been Placed" });
+      .json({
+        success: true,
+        data: order,
+        message: "Your Order has been Placed:)",
+      });
   } catch (err) {
     errorResponse(res, err);
   }

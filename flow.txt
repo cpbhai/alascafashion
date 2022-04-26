@@ -1,7 +1,5 @@
-cpanel backend with api.alascafashion, frontend on vercel alascafashion.in
-breadcrumb spacing for phone and tablet
-cart- design, change quanity, with info: size, colour, and checkout button
-payment gateway.
+repsonsive cart, deploy fullstack
+site remove port and allow https
 my orders page for client.
 my orders page for supplier.
 footer
@@ -13,3 +11,4 @@ privacy policy
 terms and conditions
 floating action buttons
 Supplier Pages- My Products, CRUD of specific product
+Validate Cart Cookie Pricing Before Razorpay Opening, demand amount(returning from server for that quantity)

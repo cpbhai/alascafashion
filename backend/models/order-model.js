@@ -6,6 +6,10 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
     phone: {
       type: String,
       required: true,
@@ -25,6 +29,11 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    payment_id: {
+      type: String,
+      required: true,
+    },
+    otherDetails: {},
   },
   { timestamps: true }
 );
@@ -32,7 +41,7 @@ orderSchema.path("phone").validate(function (phone) {
   return phoneNumber(phone);
 }, "Phone must be a 10 digit number");
 orderSchema.path("quantity").validate(function (quantity) {
-  return quantity >= 1 && quantity <= 10;
-}, "Sorry, Quantity range allowed is: 1-10");
+  return quantity >= 1 && quantity <= 50;
+}, "Sorry, Quantity range allowed is: 1-50");
 
 module.exports = mongoose.models.Order || mongoose.model("Order", orderSchema);
