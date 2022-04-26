@@ -1,0 +1,1 @@
+deploy backend and frontend with domain

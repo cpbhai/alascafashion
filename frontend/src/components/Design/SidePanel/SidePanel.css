@@ -1,0 +1,82 @@
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .mainDrawer {
+    margin: 5px 0 0 0 !important;
+    width: 20vmax !important;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .mainDrawer {
+    margin: 7px 0 0 0 !important;
+    width: 20vmax !important;
+  }
+}
+.mdanimateopen {
+  left: 0% !important;
+  -webkit-transition: all 0.55s ease;
+  -moz-transition: all 0.55s ease;
+  -ms-transition: all 0.55s ease;
+  -o-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+.mdanimateclose {
+  left: -100% !important;
+  -webkit-transition: all 1.5s ease;
+  -moz-transition: all 1.5s ease;
+  -ms-transition: all 1.5s ease;
+  -o-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+}
+.mainDrawer {
+  /* text-decoration: none; */
+  left: -100%;
+  width: 30vh;
+  background-color: rgb(247, 7, 147);
+  z-index: 11;
+  color: #fff;
+  text-align: center;
+  overflow-y: scroll;
+  position: fixed;
+  min-height: 87vh;
+  max-height: calc(100vh - 4.5rem);
+}
+.mdNormal {
+  cursor: pointer;
+  margin: 5px 8px 5px 8px;
+  border: 1.5px solid #fff;
+  background-color: #fff;
+  color: rgb(247, 7, 147);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.mdNormal:hover {
+  color: #fff;
+  background-color: rgb(247, 7, 147);
+}
+.mdItem {
+  padding: 10px;
+}
+.mdPartnerDiv {
+  margin: 0 auto;
+}
+/* width */
+.mainDrawer::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.mainDrawer::-webkit-scrollbar-track {
+  border-radius: 1px;
+}
+
+/* Handle */
+.mainDrawer::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 1px;
+}
+
+/* Handle on hover */
+.mainDrawer::-webkit-scrollbar-thumb:hover {
+  background: red;
+}

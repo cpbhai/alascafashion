@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #e91e63;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #e91e63;
+  }
+
+  .searchTerm:focus {
+    color: #e91e63;
+  }
+
+  .searchButton {
+    width: 90px;
+    height: 36px;
+    border: 1px solid #e91e63;
+    background: #e91e63;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  /*Resize the wrap to see the search bar change!*/
+  .wrap {
+    width: 30%;
+    margin: 10px auto 0 auto;
+    text-align: center;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #e91e63;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #e91e63;
+  }
+
+  .searchTerm:focus {
+    color: #e91e63;
+  }
+
+  .searchButton {
+    width: 90px;
+    height: 36px;
+    border: 1px solid #e91e63;
+    background: #e91e63;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  /*Resize the wrap to see the search bar change!*/
+  .wrap {
+    text-align: center;
+    width: 30%;
+    margin: 10px auto 0 auto;
+  }
+  .prodsOps {
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+
+  .searchTerm {
+    width: 100%;
+    border: 3px solid #e91e63;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #e91e63;
+  }
+
+  .searchTerm:focus {
+    color: #e91e63;
+  }
+
+  .searchButton {
+    width: 90px;
+    height: 36px;
+    border: 1px solid #e91e63;
+    background: #e91e63;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  /*Resize the wrap to see the search bar change!*/
+  .wrap {
+    width: 300px;
+    margin: 10px auto 0 auto;
+    text-align: center;
+  }
+}

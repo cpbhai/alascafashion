@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+}
+.dFlexWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.justfyeven {
+  justify-content: space-evenly;
+}
+.dFlex {
+  display: flex;
+}
+.justfycent {
+  justify-content: center;
+}
+.justfystart {
+  justify-content: start;
+}
+.textCenter {
+  text-align: center;
+}
+.negateUnderLine {
+  text-decoration: none;
+}
+input[type="file"] {
+  display: none;
+}
+.green {
+  color: green;
+}
+.tomato {
+  color: tomato;
+}
+.red {
+  color: red;
+}
+.fwb {
+  font-weight: bold;
+}

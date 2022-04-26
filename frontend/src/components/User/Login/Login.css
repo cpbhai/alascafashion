@@ -1,0 +1,42 @@
+.loginForm {
+}
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .LoginHeight {
+    height: 50px;
+    /* background-color: red; */
+  }
+  .loginImage {
+    width: 300px;
+  }
+  .loginForInputs {
+    width: 300px;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .LoginHeight {
+    height: 70px;
+    /* background-color: red;  */
+  }
+  .loginImage {
+    width: 500px;
+  }
+  .loginForInputs {
+    margin-top: 50px;
+    width: 300px;
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .LoginHeight {
+    height: 20px;
+    /* background-color: red; */
+  }
+  .loginImage {
+    width: 300px;
+  }
+  .loginForInputs {
+    width: 300px;
+  }
+}

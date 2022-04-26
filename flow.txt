@@ -1,0 +1,15 @@
+cpanel backend with api.alascafashion, frontend on vercel alascafashion.in
+breadcrumb spacing for phone and tablet
+cart- design, change quanity, with info: size, colour, and checkout button
+payment gateway.
+my orders page for client.
+my orders page for supplier.
+footer
+home page aggregations
+home page design and api integration.
+faqs accordion
+about us
+privacy policy
+terms and conditions
+floating action buttons
+Supplier Pages- My Products, CRUD of specific product

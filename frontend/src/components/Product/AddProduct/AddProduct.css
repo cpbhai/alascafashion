@@ -1,0 +1,66 @@
+.addProdBigDiv {
+  /* background-color: red; */
+  /* height: 100vh; */
+}
+.addProdForm {
+  /* background-color: blue; */
+}
+.addProdImgUpload {
+  width: 300px;
+  margin: 5px auto 0 auto;
+  /* background-color: blue; */
+}
+.previewDiv {
+  max-width: 300px;
+  /* background-color: red; */
+}
+.previewImg {
+  max-width: 90px;
+  object-fit: cover;
+  /* background-color: yellow; */
+}
+.addProdBelowDiv {
+  margin-top: 10px;
+}
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .addProdHeight {
+    height: 2px;
+    /* background-color: red; */
+  }
+  .addProdImage {
+    width: 300px;
+  }
+  .addProdForInputs {
+    width: 300px;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .addProdHeight {
+    height: 20px;
+    /* background-color:; */
+  }
+  .addProdImage {
+    margin-top: 40px;
+    width: 500px;
+    height: 450px;
+    object-fit: cover;
+  }
+  .addProdForInputs {
+    width: 300px;
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .addProdHeight {
+    height: 2px;
+    /* background-color: red; */
+  }
+  .addProdImage {
+    width: 300px;
+  }
+  .addProdForInputs {
+    width: 300px;
+  }
+}
