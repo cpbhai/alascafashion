@@ -5,6 +5,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import PostAddIcon from "@mui/icons-material/PostAdd";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import { useDispatch, useSelector } from "react-redux";
 import { HIDE_SIDE_PANEL } from "../../../constants/design";
@@ -87,6 +88,16 @@ const MainDrawer = () => {
               <Grid container alignItems="center" className="mdItem" gap={0.3}>
                 <PostAddIcon sx={{ mr: 1 }} />
                 Add a Product
+              </Grid>
+            </div>
+          </Link>
+        )}
+        {user && user.role === "Client" && (
+          <Link to="/orders" className="negateUnderLine">
+            <div className="mdNormal ">
+              <Grid container alignItems="center" className="mdItem" gap={0.3}>
+                <FavoriteBorderIcon sx={{ mr: 1 }} />
+                Orders
               </Grid>
             </div>
           </Link>

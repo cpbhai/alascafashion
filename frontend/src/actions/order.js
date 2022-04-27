@@ -5,6 +5,9 @@ import {
   CREATE_ORDER_REQUEST,
   CREATE_ORDER_SUCCESS,
   CREATE_ORDER_FAIL,
+  MY_ORDERS_REQUEST,
+  MY_ORDERS_SUCCESS,
+  MY_ORDERS_FAIL,
   CLEAR_MESSAGES,
   CLEAR_ERRORS,
 } from "../constants/order";
@@ -32,6 +35,31 @@ export const createOrder = (body) => async (dispatch) => {
     dispatch({
       type: CREATE_ORDER_FAIL,
       payload: error.response.data.message,
+    });
+  }
+};
+
+//My Orders
+export const myOrders = (body) => async (dispatch) => {
+  dispatch({ type: MY_ORDERS_REQUEST });
+  try {
+    // console.log(body);
+    const token = cookie.load("token");
+    const response = await axios({
+      method: "get",
+      url: `${BASE_URL}order/my-orders`,
+      headers: {
+        "x-access-token": token,
+      },
+    });
+    const { data } = response;
+    dispatch({
+      type: MY_ORDERS_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: MY_ORDERS_FAIL,
     });
   }
 };

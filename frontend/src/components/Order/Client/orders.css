@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .clOrderMainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto 30px;
+  }
+  .clOrderHeight {
+    height: 20px;
+  }
+  .clOrderDiv {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: red; */
+    max-width: 500px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76);
+  }
+  .clOrderImg {
+    width: 100px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+  .clOrderDetails {
+    width: 350px;
+    /* background-color: red; */
+  }
+  .clOrderDetails > p {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    /* background-color: red; */
+  }
+  .clOrderStatus {
+    color: #fff;
+    padding: 5px;
+  }
+  .clOrderViewProd {
+    color: #fff;
+    margin-top: 10px;
+    font-weight: bold;
+    background: tomato;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .clOrderViewProd:hover {
+    border: 3px solid tomato;
+    background-color: #fff;
+    color: tomato;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .clOrderMainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto 30px;
+  }
+  .clOrderHeight {
+    height: 20px;
+  }
+  .clOrderDiv {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: red; */
+    max-width: 500px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76);
+  }
+  .clOrderImg {
+    width: 100px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+  .clOrderDetails {
+    width: 350px;
+    /* background-color: red; */
+  }
+  .clOrderDetails > p {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    /* background-color: red; */
+  }
+  .clOrderStatus {
+    color: #fff;
+    padding: 5px;
+  }
+  .clOrderViewProd {
+    color: #fff;
+    margin-top: 10px;
+    font-weight: bold;
+    background: tomato;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .clOrderViewProd:hover {
+    border: 3px solid tomato;
+    background-color: #fff;
+    color: tomato;
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .clOrderMainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto 30px;
+  }
+  .clOrderHeight {
+    height: 20px;
+  }
+  .clOrderDiv {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: red; */
+    max-width: 300px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76);
+  }
+  .clOrderImg {
+    width: 80px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+  .clOrderDetails {
+    width: 350px;
+    /* background-color: red; */
+  }
+  .clOrderDetails > p {
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 8px;
+    margin-top: 2px;
+    /* background-color: red; */
+  }
+  .clOrderStatus {
+    color: #fff;
+    padding: 5px;
+  }
+  .clOrderViewProd {
+    color: #fff;
+    margin-top: 10px;
+    font-weight: bold;
+    background: tomato;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .clOrderViewProd:hover {
+    border: 3px solid tomato;
+    background-color: #fff;
+    color: tomato;
+  }
+}

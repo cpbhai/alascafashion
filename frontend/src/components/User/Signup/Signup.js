@@ -106,7 +106,10 @@ const Signup = () => {
             Register Me
           </Button>
           <br></br>
-          <Link to="/login" style={{ textDecoration: "none" }}>
+          <Link
+            to={`/login?next=${params ? params : "/"}`}
+            style={{ textDecoration: "none" }}
+          >
             <Button
               color="secondary"
               variant="contained"

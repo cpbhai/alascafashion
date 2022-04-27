@@ -52,9 +52,11 @@ const Cart = () => {
           name,
           phone,
           address,
+          disCost: product.disCost,
           otherDetails: {
             size: product.sizes[product.size],
             colour: product.colours[product.colour],
+            status: "Ordered",
           },
         };
         dispatch(createOrder(payload));

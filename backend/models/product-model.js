@@ -65,14 +65,17 @@ const productSchema = new mongoose.Schema(
     },
     postedBy: {
       type: mongoose.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     category: {
       type: mongoose.Types.ObjectId,
+      ref: "Category",
       required: true,
     },
     subcategory: {
       type: mongoose.Types.ObjectId,
+      ref: "Subcategory",
       required: true,
     },
     avgRating: {
@@ -83,6 +86,7 @@ const productSchema = new mongoose.Schema(
       {
         by: {
           type: mongoose.Types.ObjectId,
+          ref: "User",
           required: true,
         },
         value: { type: Number, required: true },

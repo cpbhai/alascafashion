@@ -27,6 +27,7 @@ import AddProduct from "./components/Product/AddProduct/AddProduct";
 import Products from "./components/Product/Products/Products";
 import Product from "./components/Product/Product/Product";
 import Cart from "./components/Cart/Cart";
+import ClientOrders from "./components/Order/Client/orders";
 // import Swal from "sweetalert2";
 function App() {
   const { loading, user } = useSelector((state) => state.user);
@@ -65,6 +66,18 @@ function App() {
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/product/:_id" element={<Product />} />
         <Route exact path="/cart" element={<Cart />} />
+        <Route
+          exact
+          path="/orders"
+          element={
+            user && user.role === "Client" ? (
+              <ClientOrders />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        {/* <Route exact path="/my-orders" element={<SupplierOrders />} /> */}
       </Routes>
       {/* <Footer /> */}
     </Router>

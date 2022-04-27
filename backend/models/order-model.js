@@ -4,6 +4,7 @@ const orderSchema = new mongoose.Schema(
   {
     orderedBy: {
       type: mongoose.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     name: {
@@ -23,6 +24,7 @@ const orderSchema = new mongoose.Schema(
     },
     product: {
       type: mongoose.Types.ObjectId,
+      product: "Product",
       required: true,
     },
     quantity: {
@@ -31,6 +33,10 @@ const orderSchema = new mongoose.Schema(
     },
     payment_id: {
       type: String,
+      required: true,
+    },
+    disCost: {
+      type: Number,
       required: true,
     },
     otherDetails: {},
