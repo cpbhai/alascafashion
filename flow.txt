@@ -1,4 +1,3 @@
-repsonsive cart, deploy fullstack
 site remove port and allow https
 my orders page for client.
 my orders page for supplier.
