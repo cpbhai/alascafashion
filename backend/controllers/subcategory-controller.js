@@ -20,7 +20,7 @@ exports.getOfCat = async (req, res) => {
   try {
     const { of } = req.query;
 
-    const subcats = await SubcategoryModel.aggregate([
+    const subcats = await SubCategoryModel.aggregate([
       { $match: { category: of ? ObjectId(of) : { $ne: null } } },
       {
         $project: {

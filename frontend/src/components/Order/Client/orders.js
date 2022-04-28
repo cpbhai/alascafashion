@@ -5,6 +5,7 @@ import { myOrders } from "../../../actions/order";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import Loading from "../../Design/Loading/Loading";
+import MetaData from "../../../utils/MetaData";
 const ClientOrders = () => {
   const dispatch = useDispatch();
   const { orders, loading } = useSelector((state) => state.order);
@@ -27,7 +28,11 @@ const ClientOrders = () => {
   const selectedColorSpan = { padding: "2px" };
   return (
     <>
-      <Loading show={loading} />
+      {loading ? (
+        <Loading show={true} />
+      ) : (
+        <MetaData title="My Orders | Alasca Fashion" />
+      )}
       <div className="clOrderHeight"></div>
       <div className="clOrderMainDiv">
         {orders &&

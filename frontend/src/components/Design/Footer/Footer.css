@@ -3,6 +3,7 @@
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
   .footerMainDiv {
     height: auto !important;
+    margin-top: 50px !important;
   }
   .footerChildrens > div {
     margin-top: 8px;
@@ -20,6 +21,7 @@
 
 .footerMainDiv {
   height: 300px;
+  margin-top: 100px;
   background-color: black;
 }
 

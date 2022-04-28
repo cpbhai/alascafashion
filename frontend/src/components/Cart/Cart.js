@@ -12,6 +12,7 @@ import SendNotif from "../../utils/SendNotif";
 import { useNavigate } from "react-router-dom";
 import { createOrder, clearErrors, clearMessages } from "../../actions/order";
 import Loading from "../Design/Loading/Loading";
+import MetaData from "../../utils/MetaData";
 const Cart = () => {
   function loadScript(src) {
     return new Promise((resolve) => {
@@ -189,7 +190,11 @@ const Cart = () => {
   if (cart === undefined) return <></>;
   return (
     <>
-      <Loading show={loading} />
+      {loading ? (
+        <Loading show={true} />
+      ) : (
+        <MetaData title="My Cart | Alasca Fashion" />
+      )}
       {cart.length ? (
         <div className="cartDiv dFlexWrap justfyeven">
           <div>

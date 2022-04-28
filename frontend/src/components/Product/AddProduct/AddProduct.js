@@ -34,6 +34,7 @@ import {
   isDarkBg,
   daysUpto7,
 } from "../../../utils/hardcoded";
+import MetaData from "../../../utils/MetaData";
 const AddProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -199,7 +200,11 @@ const AddProduct = () => {
   };
   return (
     <>
-      <Loading show={loading} />
+      {loading ? (
+        <Loading show={true} />
+      ) : (
+        <MetaData title="Add Product | Alasca Fashion" />
+      )}
       <div className="addProdBigDiv">
         <div className="addProdHeight"></div>
         <form className="addProdForm dFlexWrap justfyeven">

@@ -12,7 +12,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Slider from "@mui/material/Slider";
 import Switch from "@mui/material/Switch";
 import Pagination from "@mui/material/Pagination";
-
+import MetaData from "../../../utils/MetaData";
 import { sortByOps } from "../../../utils/hardcoded";
 import "./Products.css";
 
@@ -74,7 +74,11 @@ const Products = () => {
 
   return (
     <>
-      <Loading show={loading} />
+      {loading ? (
+        <Loading show={true} />
+      ) : (
+        <MetaData title="Our Products from Exclusive Collections | Alasca Fashion" />
+      )}
 
       <div className="wrap">
         <div className="search">

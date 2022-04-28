@@ -10,6 +10,7 @@ import { signup, clearErrors, clearMessages } from "../../../actions/user";
 import { useDispatch, useSelector } from "react-redux";
 import SendNotif from "../../../utils/SendNotif";
 import { useNavigate, useLocation } from "react-router-dom";
+import MetaData from "../../../utils/MetaData";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const Signup = () => {
   };
   return (
     <>
+      <MetaData title="Sign Up | Alasca Fashion" />
       <div className="SignupHeight"></div>
       <form className="signupForm dFlexWrap justfyeven">
         <div>

@@ -16,6 +16,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
+import MetaData from "../../../utils/MetaData";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -83,7 +84,13 @@ const Product = () => {
 
   return (
     <>
-      <Loading show={loading} />
+      {loading ? (
+        <Loading show={true} />
+      ) : (
+        <MetaData
+          title={product ? `${product.title} | Alasca Fashion` : "Loading..."}
+        />
+      )}
       <div className="productHeight"></div>
       {product && (
         <div>

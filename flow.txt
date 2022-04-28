@@ -1,4 +1,4 @@
-metadata 404 page and Empty Cart Page and On Loading HeaderAndFooter Space preserve and home page
+Empty Cart Page and On Loading HeaderAndFooter Space preserve and home page
 
 
 
