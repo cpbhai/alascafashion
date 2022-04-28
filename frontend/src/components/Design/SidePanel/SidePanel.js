@@ -44,7 +44,7 @@ const MainDrawer = () => {
             </Grid>
           </div>
         </Link>
-        <Link to="/products" className="negateUnderLine">
+        <Link to="/products?sortBy=latest" className="negateUnderLine">
           <div className="mdNormal ">
             <Grid container alignItems="center" className="mdItem" gap={0.3}>
               <CheckroomIcon sx={{ mr: 1 }} />

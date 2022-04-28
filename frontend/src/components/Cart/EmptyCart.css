@@ -1,0 +1,18 @@
+.cartEmptyDiv {
+  display: flex;
+}
+.cartEmptyImg {
+  width: 150px;
+  margin: 5vh auto 0 auto;
+  object-fit: cover;
+}
+.cartEmptyHead {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+.cartEmptyPara {
+  text-align: center;
+  margin: 0 0 20vh 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+}

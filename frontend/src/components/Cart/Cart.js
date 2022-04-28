@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { createOrder, clearErrors, clearMessages } from "../../actions/order";
 import Loading from "../Design/Loading/Loading";
 import MetaData from "../../utils/MetaData";
+import EmptyCart from "./EmptyCart";
 const Cart = () => {
   function loadScript(src) {
     return new Promise((resolve) => {
@@ -338,7 +339,7 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div>No Item in your cart</div>
+        <EmptyCart />
       )}
     </>
   );

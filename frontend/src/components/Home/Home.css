@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni&display=swap");
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .homeHeight {
+    height: 7px;
+  }
+  .homeTileDivTabl {
+    display: block !important;
+    width: 100%;
+    height: 70vh;
+    /* background-repeat: no-repeat; */
+    background-image: url("../../../public/slides/girl-holds-fashion-shopping-bag-beauty.jpg");
+  }
+  .homeTileText {
+    color: #fff;
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    padding: 230px 0 0 70px;
+  }
+  .homeTileBtnPara {
+    padding: 100px 0 0 170px;
+  }
+  .homeTileLink {
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+  }
+  .homeTileLink {
+    color: #000;
+    padding: 20px 30px;
+    background-color: #fff;
+  }
+  .homeTileLink:hover {
+    color: #fff;
+    background-color: transparent;
+    border: 3px solid #fff;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .homeHeight {
+    height: 7px;
+  }
+  .homeTileDivDesk {
+    display: block !important;
+    width: 100%;
+    height: 80vh;
+    /* background-repeat: no-repeat; */
+    background-image: url("../../../public/slides/girl-holds-fashion-shopping-bag-beauty.jpg");
+  }
+  .homeTileText {
+    color: #fff;
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    padding: 230px 0 0 70px;
+  }
+  .homeTileBtnPara {
+    padding: 100px 0 0 170px;
+  }
+  .homeTileLink {
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+  }
+  .homeTileLink {
+    color: #000;
+    padding: 20px 30px;
+    background-color: #fff;
+  }
+  .homeTileLink:hover {
+    color: #fff;
+    background-color: transparent;
+    border: 3px solid #fff;
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .homeHeight {
+    height: 1px;
+  }
+  .homeTileDivPhon {
+    display: block !important;
+    width: 100%;
+    height: 80vh;
+    /* background-repeat: no-repeat; */
+    background-image: url("https://res.cloudinary.com/alascafashion-media/image/upload/v1650962550/products/jcvcwbwktuyh9zwf9swx.jpg");
+  }
+  .homeTileText {
+    color: #000;
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    padding: 100px 0 0 20px;
+    width: 250px;
+  }
+  .homeTileBtnPara {
+    padding: 80px 0 0 40px;
+  }
+  .homeTileLink {
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+  }
+  .homeTileLink {
+    color: #000;
+    padding: 20px 30px;
+    background-color: #fff;
+  }
+  .homeTileLink:hover {
+    color: #fff;
+    background-color: transparent;
+    border: 3px solid #fff;
+  }
+}
+.homeTileDivDesk {
+  display: none;
+}
+.homeTileDivPhon {
+  display: none;
+}
+.homeTileDivTabl {
+  display: none;
+}

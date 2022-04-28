@@ -1,6 +1,3 @@
-Empty Cart Page and On Loading HeaderAndFooter Space preserve and home page
-
-
 
 about us
 privacy policy
