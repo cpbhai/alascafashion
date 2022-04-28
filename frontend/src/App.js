@@ -13,7 +13,7 @@ import Notify from "./components/Design/Notify";
 import Header from "./components/Design/Header/Header";
 import Loading from "./components/Design/Loading/Loading";
 import SidePanel from "./components/Design/SidePanel/SidePanel";
-// import Footer from "./components/Design/Footer/Footer";
+import Footer from "./components/Design/Footer/Footer";
 // import PrivacyPolicy from "./components/other/PrivacyPolicy";
 // import TermsNConditions from "./components/other/TermsNConditions";
 // import SearchTrip from "./components/Trip/SearchTrip";
@@ -79,7 +79,7 @@ function App() {
         />
         {/* <Route exact path="/my-orders" element={<SupplierOrders />} /> */}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

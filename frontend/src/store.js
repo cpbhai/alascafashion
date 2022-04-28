@@ -6,12 +6,14 @@ import { design } from "./reducers/design";
 import { product } from "./reducers/product";
 import { order } from "./reducers/order";
 import { catandsubcat } from "./reducers/catandsubcat";
+import { subscriber } from "./reducers/subsriber";
 const reducer = combineReducers({
   user,
   design,
   product,
   order,
   catandsubcat,
+  subscriber,
 });
 let initialState = {};
 const middleware = [thunk];

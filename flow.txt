@@ -1,5 +1,4 @@
-site allow https
-footer and metadata 404 page and Empty Cart Page and On Loading HeaderAndFooter Space preserve and home page
+metadata 404 page and Empty Cart Page and On Loading HeaderAndFooter Space preserve and home page
 
 
 

@@ -28,4 +28,8 @@ router.use("/subcategory", Subcategory);
 const Order = require("./order-route");
 router.use("/order", Order);
 
+//@Subscriber
+const Subscriber = require("./subscriber-route");
+router.use("/subscriber", Subscriber);
+
 module.exports = router;

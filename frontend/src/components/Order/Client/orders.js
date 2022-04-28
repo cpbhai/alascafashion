@@ -4,9 +4,10 @@ import { useEffect } from "react";
 import { myOrders } from "../../../actions/order";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import Loading from "../../Design/Loading/Loading";
 const ClientOrders = () => {
   const dispatch = useDispatch();
-  const { orders } = useSelector((state) => state.order);
+  const { orders, loading } = useSelector((state) => state.order);
   useEffect(() => {
     if (!orders) {
       dispatch(myOrders());
@@ -26,6 +27,7 @@ const ClientOrders = () => {
   const selectedColorSpan = { padding: "2px" };
   return (
     <>
+      <Loading show={loading} />
       <div className="clOrderHeight"></div>
       <div className="clOrderMainDiv">
         {orders &&

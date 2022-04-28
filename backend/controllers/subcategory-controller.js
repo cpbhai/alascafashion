@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Types;
-const subcategoryModel = require("../models/subcategory-model");
 const SubCategoryModel = require("../models/subcategory-model");
 const errorResponse = require("../utils/errorResponse");
 
@@ -21,7 +20,7 @@ exports.getOfCat = async (req, res) => {
   try {
     const { of } = req.query;
 
-    const subcats = await subcategoryModel.aggregate([
+    const subcats = await SubcategoryModel.aggregate([
       { $match: { category: of ? ObjectId(of) : { $ne: null } } },
       {
         $project: {
