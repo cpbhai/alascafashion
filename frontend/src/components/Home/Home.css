@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 /* Ipad Portrait and Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .homeHeight {
@@ -34,6 +36,48 @@
     color: #fff;
     background-color: transparent;
     border: 3px solid #fff;
+  }
+  .homeLastestTrends {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeNewLaunches {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLink {
+    text-decoration: none;
+    width: 300px;
+    /* box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76); */
+    text-align: center;
+    margin: 10px auto;
+  }
+  .homeSubcatLink > img {
+    width: 280px;
+    height: 300px;
+    object-fit: contain;
+    padding: 10px 10px 0 10px;
+  }
+  .homeCatalogue {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeExplore {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLabel {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #000;
   }
 }
 /* Desktop No retina */
@@ -71,6 +115,48 @@
     background-color: transparent;
     border: 3px solid #fff;
   }
+  .homeLastestTrends {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeNewLaunches {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLink {
+    text-decoration: none;
+    width: 300px;
+    /* box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76); */
+    text-align: center;
+    margin: 10px auto;
+  }
+  .homeSubcatLink > img {
+    width: 280px;
+    height: 300px;
+    object-fit: contain;
+    padding: 10px 10px 0 10px;
+  }
+  .homeCatalogue {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeExplore {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLabel {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #000;
+  }
 }
 /* Phone Portrait and Landscape  70vh === 344 X 484*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -107,6 +193,48 @@
     color: #fff;
     background-color: transparent;
     border: 3px solid #fff;
+  }
+  .homeLastestTrends {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeNewLaunches {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLink {
+    text-decoration: none;
+    width: 320px;
+    /* box-shadow: 1px 4px 8px rgba(15, 15, 15, 0.76); */
+    text-align: center;
+    margin: 10px auto;
+  }
+  .homeSubcatLink > img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    padding: 10px 10px 0 10px;
+  }
+  .homeCatalogue {
+    font-family: "Libre Bodoni", serif;
+    font-size: 30px;
+    margin-top: 25px;
+    text-align: center;
+  }
+  .homeExplore {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    text-align: center;
+    margin: 7px auto 22px auto;
+  }
+  .homeSubcatLabel {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #000;
   }
 }
 .homeTileDivDesk {

@@ -78,7 +78,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <p className="heading">Important as</p>
+            <p className="heading">Important Links</p>
             <p className="para">
               <a href="/about-us" className="negateUnderLine white">
                 About Us
@@ -124,7 +124,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <p className="heading">Subscribe to Latest Updates</p>
+            <p className="heading">Get Updates about Latest Products</p>
             <TextField
               sx={{
                 background: "#fff",

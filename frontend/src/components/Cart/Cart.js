@@ -254,7 +254,7 @@ const Cart = () => {
               </span>
             </p>
             <p className="cartTextCont">Size: {cart[0].sizes[cart[0].size]}</p>
-            <p className="cartTextCont">In Stock: {cart[0].inStock}</p>
+            {/* <p className="cartTextCont">In Stock: {cart[0].inStock}</p> */}
           </div>
           <div className="textCenter">
             <TextField
