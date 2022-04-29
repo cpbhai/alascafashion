@@ -17,13 +17,13 @@ exports.addProduct = async (req, res) => {
       _id: product._id,
       thumbnail: product.thumbnail,
     };
-    userModel.find({ role: "Client" }).exec((each) =>
+    userModel.find({ role: "Client" }).exec((err, each) =>
       sendEmail("new-product", {
         email: each.email,
         product: projectFields,
       })
     );
-    subscriberModel.find().exec((each) =>
+    subscriberModel.find().exec((err, each) =>
       sendEmail("new-product", {
         email: each.email,
         product: projectFields,
