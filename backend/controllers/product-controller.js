@@ -80,7 +80,7 @@ exports.get = async (req, res) => {
     } = req.query;
     if (page) page = Number(page);
     else page = 1;
-    const { get, getRandom } = require("../utils/aggregation"),
+    const { get } = require("../utils/aggregation"),
       productsPerPage = 10;
     const query = get(
       keyword,
