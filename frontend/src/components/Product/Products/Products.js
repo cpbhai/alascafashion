@@ -24,17 +24,17 @@ const Products = () => {
   const query = new URLSearchParams(useLocation().search);
 
   useEffect(() => {
-    if (!cats) dispatch(getCats());
-    if (!subcats) dispatch(getSubCats("626505a6a8fc44666c191d7f"));
+    dispatch(getCats());
+    dispatch(getSubCats("626505a6a8fc44666c191d7f"));
     if (cats && cats.length && cats[0].label !== "All") {
       cats.unshift({ label: "All", _id: "" });
     }
     if (subcats && subcats.length && subcats[0].label !== "All") {
       subcats.unshift({ label: "All", _id: "" });
     }
-    if (!productsData) dispatch(getProducts(query));
+    dispatch(getProducts(query));
     // console.log("we", productsData, cats, subcats);
-  }, [dispatch, productsData, cats, subcats]);
+  }, [dispatch]);
 
   const [values, setValues] = useState({
     keyword: query.get("keyword") ? query.get("keyword") : "",

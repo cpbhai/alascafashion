@@ -74,14 +74,14 @@ const Home = () => {
             </div>
             <div className="dFlexWrap justfyeven">
               {subcats.map((each, idx) => (
-                <a
-                  href={`/products?subcategory=${each._id}`}
+                <Link
+                  to={`/products?subcategory=${each._id}`}
                   key={idx}
                   className="homeSubcatLink"
                 >
                   <img src={subcatImgs(each._id)} alt={each.label} />
                   <p className="homeSubcatLabel">{each.label}</p>
-                </a>
+                </Link>
               ))}
             </div>
           </>
