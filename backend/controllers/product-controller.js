@@ -66,11 +66,21 @@ exports.specific = async (req, res) => {
 };
 exports.get = async (req, res) => {
   try {
-    let { getQuery, keyword, category, subcategory, low, high, page, sortBy } =
-      req.query;
+    let {
+      getQuery,
+      keyword,
+      category,
+      subcategory,
+      low,
+      high,
+      page,
+      sortBy,
+      type,
+      exclude,
+    } = req.query;
     if (page) page = Number(page);
     else page = 1;
-    const { get } = require("../utils/aggregation"),
+    const { get, getRandom } = require("../utils/aggregation"),
       productsPerPage = 10;
     const query = get(
       keyword,
@@ -80,7 +90,9 @@ exports.get = async (req, res) => {
       high,
       page,
       sortBy,
-      productsPerPage
+      productsPerPage,
+      type,
+      exclude
     );
     if (getQuery) return res.send(query);
     let products = await productModel.aggregate(query),

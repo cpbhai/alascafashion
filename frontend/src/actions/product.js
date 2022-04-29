@@ -46,6 +46,7 @@ export const addProduct = (body) => async (dispatch) => {
 //Get Products
 export const getProducts = (query) => async (dispatch) => {
   // console.log(query);
+  // debugger;
   dispatch({ type: GET_PRODUCTS_REQUEST });
   try {
     const response = await axios({

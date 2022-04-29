@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSpecificProd } from "../../../actions/product";
+import { getProducts, getSpecificProd } from "../../../actions/product";
 import { addToCart } from "../../../actions/design";
 import "./Product.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,25 +7,35 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../Design/Loading/Loading";
 import SendNotif from "../../../utils/SendNotif";
 import Chip from "@mui/material/Chip";
-import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import MetaData from "../../../utils/MetaData";
+import ProductCard from "../ProductCard/ProductCard";
 
 const Product = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { product, loading, error } = useSelector((state) => state.product);
+  const { product, loading, error, productsData } = useSelector(
+    (state) => state.product
+  );
   const { _id } = useParams();
   useEffect(() => {
     if (!product) dispatch(getSpecificProd(_id));
-    else setImg(product.thumbnail);
+    else {
+      setImg(product.thumbnail);
+      dispatch(
+        getProducts(
+          `category=${product.category._id}&subcategory=${product.subcategory._id}&type=similar&exclude=${product._id}`
+        )
+      );
+    }
     if (error) {
       navigate("/");
       dispatch(SendNotif("error", error));
@@ -93,7 +103,7 @@ const Product = () => {
       )}
       <div className="productHeight"></div>
       {product && (
-        <div>
+        <>
           <div className="dFlex justfycent productBread">
             <Breadcrumbs aria-label="breadcrumb" color="white">
               <Link
@@ -211,14 +221,25 @@ const Product = () => {
                 </span>
               </p>
               <p className="productInfo">
-                Returnable: {daysMapper(product.specifications.isReturnable)}
+                Delivery Cost: <span>FREE DELIVERY</span>
               </p>
               <p className="productInfo">
                 Exchangable: {daysMapper(product.specifications.isExchangable)}
               </p>
+              <p className="productInfo">
+                Returnable: {daysMapper(product.specifications.isReturnable)}
+              </p>
             </div>
           </div>
-        </div>
+          <p className="productSimilar">Similar Products</p>
+          <div className="productSimilarDiv">
+            {productsData &&
+              productsData.products &&
+              productsData.products.map((each, idx) => (
+                <ProductCard key={idx} data={each} />
+              ))}
+          </div>
+        </>
       )}
     </>
   );

@@ -7,7 +7,9 @@ exports.get = (
   high,
   page,
   sortBy,
-  productsPerPage
+  productsPerPage,
+  type,
+  exclude
 ) => {
   //
   let matchObj = {},
@@ -33,6 +35,20 @@ exports.get = (
       sortObj.disCost = -1;
     } else pipeline.pop();
   }
+  //Reusability Start
+  if (type == "similar") {
+    pipeline = [
+      {
+        $match: {
+          _id: { $ne: ObjectId(exclude) },
+          category: ObjectId(category),
+          subcategory: ObjectId(subcategory),
+        },
+      },
+      { $sample: { size: productsPerPage } },
+    ];
+  }
+  //Reusability End
   pipeline.push(
     {
       $facet: {

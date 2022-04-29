@@ -1,5 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni&display=swap");
+.productInfo > span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.productSimilar {
+  font-family: "Libre Bodoni", serif;
+  font-size: 30px;
+  text-align: center;
+  margin: 35px 0 25px 0;
+}
+.productSimilarDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 /* Ipad Portrait and Landscape */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .productBread {
