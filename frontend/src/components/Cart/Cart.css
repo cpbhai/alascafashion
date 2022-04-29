@@ -3,7 +3,6 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .cartDiv {
     margin-top: 10px;
-    height: 500px;
     width: 100%;
     /* background-color: red; */
   }
@@ -71,10 +70,9 @@
 /* Phone Portrait and Landscape  70vh === 344 X 484*/
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
   .cartDiv {
-    margin-top: 10px;
-    height: 500px;
+    margin-top: 5px;
     width: 100%;
-    /* background-color: red; */
+    /* background-color: yellow; */
   }
   .cartProdImg {
     width: 300px;
