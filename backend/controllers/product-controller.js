@@ -5,6 +5,7 @@ const errorResponse = require("../utils/errorResponse");
 const { addProduct } = require("../middlewares/validatepayload");
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Types;
+const sendEmail = require("../utils/sendEmail");
 
 exports.addProduct = async (req, res) => {
   try {
