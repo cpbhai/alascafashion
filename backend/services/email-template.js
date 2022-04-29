@@ -592,7 +592,8 @@ exports.newProduct = (product) => {
   return {
     subject: `New Product, You might like - Alasca Fashion`,
     body: `
-      <style>
+      <head>
+        <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
         /* Ipad Portrait and Landscape */
         @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -640,7 +641,8 @@ exports.newProduct = (product) => {
             width:40px;
         }
         </style>
-
+      </head>
+      <body>
         <div style="display:flex;justify-content:center;">
         <img src="${
           product.images[product.thumbnail].url
@@ -662,6 +664,7 @@ exports.newProduct = (product) => {
         <img src="https://res.cloudinary.com/alascafashion-media/image/upload/v1651242921/utils/image-3_zzpjzi.png" alt="...">
         </img>
         </div>
+      </body>
       `,
   };
 };
