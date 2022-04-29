@@ -17,18 +17,24 @@ exports.addProduct = async (req, res) => {
       _id: product._id,
       thumbnail: product.thumbnail,
     };
-    userModel.find({ role: "Client" }).exec((err, each) =>
-      sendEmail("new-product", {
-        email: each.email,
-        product: projectFields,
-      })
-    );
-    subscriberModel.find().exec((err, each) =>
-      sendEmail("new-product", {
-        email: each.email,
-        product: projectFields,
-      })
-    );
+    userModel.find({ role: "Client" }).exec((err, users) => {
+      if (err) return console.log("Error while sending mail-1", err);
+      users.map((each) => {
+        sendEmail("new-product", {
+          email: each.email,
+          product: projectFields,
+        });
+      });
+    });
+    subscriberModel.find().exec((err, users) => {
+      if (err) return console.log("Error while sending mail-2", err);
+      users.map((each) => {
+        sendEmail("new-product", {
+          email: each.email,
+          product: projectFields,
+        });
+      });
+    });
     res.status(200).json({
       success: true,
       data: product,
