@@ -1,11 +1,13 @@
 const userModel = require("../models/user-model");
 const errorResponse = require("../utils/errorResponse");
 const { userSignup, userLogin } = require("../middlewares/validatepayload");
+const sendEmail = require("../utils/sendEmail");
 exports.signup = async (req, res) => {
   try {
     const data = userSignup(req.body);
     const user = await userModel.create(data);
     const token = user.getJWTToken();
+    sendEmail("signup", data);
     res.status(200).json({
       success: true,
       data: user,

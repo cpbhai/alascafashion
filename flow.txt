@@ -1,8 +1,7 @@
-
 about us
 privacy policy
 terms and conditions
-floating action buttons
+
+edit product supplier
 my orders page for supplier.
 Supplier Pages- My Products, CRUD of specific product
-Validate Cart Cookie Pricing Before Razorpay Opening, demand amount(returning from server for that quantity)

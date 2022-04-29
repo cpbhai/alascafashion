@@ -1,4 +1,6 @@
 const productModel = require("../models/product-model");
+const userModel = require("../models/user-model");
+const subscriberModel = require("../models/subscriber-model");
 const errorResponse = require("../utils/errorResponse");
 const { addProduct } = require("../middlewares/validatepayload");
 const mongoose = require("mongoose");
@@ -8,6 +10,24 @@ exports.addProduct = async (req, res) => {
   try {
     req.body = await addProduct(req.body, req.user._id);
     const product = await productModel.create(req.body);
+    const projectFields = {
+      images: product.images,
+      title: product.title,
+      _id: product._id,
+      thumbnail: product.thumbnail,
+    };
+    userModel.find({ role: "Client" }).exec((each) =>
+      sendEmail("new-product", {
+        email: each.email,
+        product: projectFields,
+      })
+    );
+    subscriberModel.find().exec((each) =>
+      sendEmail("new-product", {
+        email: each.email,
+        product: projectFields,
+      })
+    );
     res.status(200).json({
       success: true,
       data: product,

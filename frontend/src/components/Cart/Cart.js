@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import SendNotif from "../../utils/SendNotif";
 import { useNavigate } from "react-router-dom";
 import { createOrder, clearErrors, clearMessages } from "../../actions/order";
+import { getSpecificProd } from "../../actions/product";
 import Loading from "../Design/Loading/Loading";
 import MetaData from "../../utils/MetaData";
 import EmptyCart from "./EmptyCart";
@@ -76,6 +77,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.design);
   const { user } = useSelector((state) => state.user);
+  const { product } = useSelector((state) => state.product);
   const { message, error, loading } = useSelector((state) => state.order);
   const navigate = useNavigate();
   const initialState = {
@@ -177,9 +179,20 @@ const Cart = () => {
     else if (!address.pincode)
       dispatch(SendNotif("error", "Please Enter the Recipent's PIN Code"));
     //address: { state: "", city: "", pincode: "", streetAddr: "", landmark: "" },
-    else if (user)
-      displayRazorpay(cart[0], user, cart[0].disCost * cart[0].quantity);
-    else {
+    else if (user) {
+      dispatch(getSpecificProd(cart[0]));
+      if (
+        product &&
+        product.disCost == cart[0].disCost &&
+        product.inStock >= cart[0].quantity
+      ) {
+        displayRazorpay(cart[0], user, cart[0].disCost * cart[0].quantity);
+      } else {
+        dispatch(SendNotif("error", "Something went wrong"));
+
+        dispatch(clearCart());
+      }
+    } else {
       Swal.fire({
         icon: "error",
         title: "Please Log In, before Buying",
