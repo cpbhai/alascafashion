@@ -209,14 +209,7 @@ const EditProduct = () => {
     const { name, value } = e.target;
     // console.log(value);
     let newstate = { ...values };
-    if (name === "thumbnail") {
-      if (Number(value) >= 1 && Number(value) <= images.length)
-        newstate[name] = value;
-      else {
-        newstate[name] = "";
-        dispatch(SendNotif("warning", "Allowed Values are: 1-5"));
-      }
-    } else newstate[name] = value;
+    newstate[name] = value;
     setValues(newstate);
   };
   return (
