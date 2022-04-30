@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
 /* Ipad Portrait and Landscape */
 /*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
 }*/
@@ -12,10 +13,9 @@
 @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
 }
 .navLogoLink {
-  width: 150px;
-}
-.navLogo-1 {
-  height: 25px;
-  width: 150px;
-  object-fit: contain;
+  text-decoration: none;
+  font-family: "Ms Madi", cursive;
+  font-size: 25px;
+  color: #fff;
+  font-weight: bold;
 }

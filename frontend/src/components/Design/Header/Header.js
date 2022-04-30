@@ -61,7 +61,7 @@ const Header = () => {
     <Fragment>
       <Fragment>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="fixed" sx={{ backgroundColor: "white" }}>
+          <AppBar position="fixed" sx={{ backgroundColor: "rgb(247, 7, 147)" }}>
             <Toolbar>
               <IconButton
                 size="large"
@@ -70,14 +70,14 @@ const Header = () => {
                 onClick={() => handleSwitch()}
               >
                 {enableSidePanel ? (
-                  <CloseIcon color="error" />
+                  <CloseIcon sx={{ color: "#fff" }} />
                 ) : (
-                  <MenuIcon color="secondary" />
+                  <MenuIcon sx={{ color: "white" }} />
                 )}
               </IconButton>
               <Typography variant="p" component="div" sx={{ flexGrow: 1 }}>
                 <Link to="/" className="dFlex justfystart navLogoLink">
-                  <img src="/logomain1.png" alt="..." className="navLogo-1" />
+                  Alasca Fashion
                 </Link>
               </Typography>
               <Link to="/cart">
@@ -87,12 +87,12 @@ const Header = () => {
                   sx={{
                     mr: 2,
                     "& .MuiBadge-badge": {
-                      backgroundColor: "rgb(247, 7, 147)",
+                      backgroundColor: "#000",
                       color: "#fff",
                     },
                   }}
                 >
-                  <ShoppingCartIcon sx={{ color: "#000" }} />
+                  <ShoppingCartIcon sx={{ color: "#fff" }} />
                 </Badge>
               </Link>
               {user ? (
@@ -102,7 +102,7 @@ const Header = () => {
               ) : (
                 <Link to="/signup">
                   <IconButton>
-                    <AccountCircleIcon color="secondary" />
+                    <AccountCircleIcon sx={{ backgroundColor: "#fff" }} />
                   </IconButton>
                 </Link>
               )}
