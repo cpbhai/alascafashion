@@ -11,6 +11,12 @@ import {
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
   GET_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
   CLEAR_MESSAGES,
   CLEAR_ERRORS,
 } from "../constants/product";
@@ -83,6 +89,59 @@ export const getSpecificProd = (_id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+//Update Product
+export const updateProd = (_id, body) => async (dispatch) => {
+  // console.log(query);
+  const token = cookie.load("token");
+  dispatch({ type: UPDATE_PRODUCT_REQUEST });
+  try {
+    const response = await axios({
+      method: "put",
+      url: `${BASE_URL}product/update/${_id}`,
+      data: body,
+      headers: {
+        "x-access-token": token,
+      },
+    });
+    const { data } = response;
+    dispatch({
+      type: UPDATE_PRODUCT_SUCCESS,
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+//Delete Product
+export const deleteProd = (_id) => async (dispatch) => {
+  // console.log(query);
+  const token = cookie.load("token");
+  dispatch({ type: DELETE_PRODUCT_REQUEST });
+  try {
+    const response = await axios({
+      method: "delete",
+      url: `${BASE_URL}product/delete/${_id}`,
+      headers: {
+        "x-access-token": token,
+      },
+    });
+    const { data } = response;
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }

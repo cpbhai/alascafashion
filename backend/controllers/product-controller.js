@@ -2,7 +2,11 @@ const productModel = require("../models/product-model");
 const userModel = require("../models/user-model");
 const subscriberModel = require("../models/subscriber-model");
 const errorResponse = require("../utils/errorResponse");
-const { addProduct } = require("../middlewares/validatepayload");
+const {
+  addProduct,
+  deleteProduct,
+  updateProduct,
+} = require("../middlewares/validatepayload");
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Types;
 const sendEmail = require("../utils/sendEmail");
@@ -48,6 +52,49 @@ exports.addProduct = async (req, res) => {
       );
     }
     // console.log(err);
+    errorResponse(res, err);
+  }
+};
+
+exports.deleteProduct = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const product = await productModel.findById(_id);
+    if (!product) throw { message: "No such product Exists" };
+    if (product.postedBy.toString() != req.user._id.toString())
+      throw { message: "You are not authorized to delete this product" };
+    deleteProduct(product.images);
+    product.remove();
+    res.status(200).json({
+      success: true,
+      message: "Product has been deleted Successfully.",
+    });
+  } catch (err) {
+    errorResponse(res, err);
+  }
+};
+
+exports.updateProduct = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    let product = await productModel.findById(_id);
+    if (!product) throw { message: "No such product Exists" };
+    if (product.postedBy.toString() != req.user._id.toString())
+      throw { message: "You are not authorized to update this product" };
+    req.body = await updateProduct(req.body, product);
+    // return res.status(200).json({ success: true, message: "Done" });
+    productModel.findByIdAndUpdate(_id, req.body).exec(() => {});
+    res.status(200).json({
+      success: true,
+      message: "Product has been updated Successfully.",
+    });
+  } catch (err) {
+    if (req.body.images) {
+      const cloudinary = require("cloudinary");
+      req.body.images.forEach((data) =>
+        cloudinary.v2.uploader.destroy(data.public_id)
+      );
+    }
     errorResponse(res, err);
   }
 };

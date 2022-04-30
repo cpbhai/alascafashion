@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+.editProdBigDiv {
+  /* background-color: red; */
+  /* height: 100vh; */
+}
+.editProdForm {
+  /* background-color: blue; */
+}
+.editProdImgUpload {
+  width: 300px;
+  margin: 5px auto 0 auto;
+  /* background-color: blue; */
+}
+.previewDiv {
+  max-width: 300px;
+  /* background-color: red; */
+}
+.previewImg {
+  max-width: 90px;
+  object-fit: cover;
+  /* background-color: yellow; */
+}
+.editProdBelowDiv {
+  margin-top: 10px;
+}
+.editProdPreState {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin: 5px;
+}
+.editProdPreState > span {
+  font-weight: bold;
+}
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .editProdHeight {
+    height: 2px;
+    /* background-color: red; */
+  }
+  .editProdImage {
+    width: 300px;
+  }
+  .editProdForInputs {
+    width: 300px;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .editProdHeight {
+    height: 20px;
+    /* background-color:; */
+  }
+  .editProdImage {
+    margin-top: 40px;
+    width: 500px;
+    height: 450px;
+    object-fit: cover;
+  }
+  .editProdForInputs {
+    width: 300px;
+  }
+}
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .editProdHeight {
+    height: 2px;
+    /* background-color: red; */
+  }
+  .editProdImage {
+    width: 300px;
+  }
+  .editProdForInputs {
+    width: 300px;
+  }
+}

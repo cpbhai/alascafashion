@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { getProducts } from "../../actions/product";
 import { getSubCats } from "../../actions/catandsubcat";
 import { subcatImgs } from "../../utils/hardcoded";
+import Button from "@mui/material/Button";
 import Loading from "../Design/Loading/Loading";
 const Home = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,16 @@ const Home = () => {
             productsData.products.map((each, idx) => (
               <ProductCard key={idx} data={each} />
             ))}
+        </div>
+        <div
+          className="dFlex justfycent"
+          style={{ margin: "15px auto 40px auto" }}
+        >
+          <Link to="/products?sortBy=latest" className="negateUnderLine">
+            <Button sx={{ background: "#e91e63" }} variant="contained">
+              View More
+            </Button>
+          </Link>
         </div>
         {subcats && (
           <>

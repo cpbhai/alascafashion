@@ -31,6 +31,7 @@ import ClientOrders from "./components/Order/Client/orders";
 import Error404 from "./components/Error404";
 import UFab from "./components/Design/UFab/UFab";
 import About from "./components/Other/About";
+import EditProduct from "./components/Product/EditProduct/EditProduct";
 // import Swal from "sweetalert2";
 function App() {
   const { loading, user } = useSelector((state) => state.user);
@@ -61,6 +62,17 @@ function App() {
           element={
             user && user.role === "Supplier" ? (
               <AddProduct />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          exact
+          path="/edit-product/:_id"
+          element={
+            user && user.role === "Supplier" ? (
+              <EditProduct />
             ) : (
               <Navigate to="/" />
             )

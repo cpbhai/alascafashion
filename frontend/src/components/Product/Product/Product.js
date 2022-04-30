@@ -18,6 +18,8 @@ import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import MetaData from "../../../utils/MetaData";
 import ProductCard from "../ProductCard/ProductCard";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { Link as RLink } from "react-router-dom";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -25,8 +27,13 @@ const Product = () => {
   const { product, loading, error, productsData } = useSelector(
     (state) => state.product
   );
+  const { user } = useSelector((state) => state.user);
   const { _id } = useParams();
   useEffect(() => {
+    if (error) {
+      navigate("/");
+      dispatch(SendNotif("error", error));
+    }
     if (!product) dispatch(getSpecificProd(_id));
     else {
       setImg(product.thumbnail);
@@ -35,10 +42,6 @@ const Product = () => {
           `category=${product.category._id}&subcategory=${product.subcategory._id}&type=similar&exclude=${product._id}`
         )
       );
-    }
-    if (error) {
-      navigate("/");
-      dispatch(SendNotif("error", error));
     }
   }, [dispatch, product, error, navigate]);
   const [size, setSize] = useState(null);
@@ -229,6 +232,24 @@ const Product = () => {
               <p className="productInfo">
                 Returnable: {daysMapper(product.specifications.isReturnable)}
               </p>
+              {user && user._id.toString() === product.postedBy.toString() && (
+                <RLink
+                  to={`/edit-product/${product._id}`}
+                  className="negateUnderLine"
+                >
+                  {/* <p>
+                    {user._id} {product.postedBy} {user.phone}
+                  </p> */}
+                  <Button
+                    variant="contained"
+                    color="error"
+                    startIcon={<BorderColorIcon />}
+                    sx={{ mt: 3 }}
+                  >
+                    Edit Product
+                  </Button>
+                </RLink>
+              )}
             </div>
           </div>
           <p className="productSimilar">Similar Products</p>

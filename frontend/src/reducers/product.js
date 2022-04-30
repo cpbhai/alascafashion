@@ -8,6 +8,12 @@ import {
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
   GET_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
   CLEAR_MESSAGES,
   CLEAR_ERRORS,
 } from "../constants/product";
@@ -16,6 +22,8 @@ export const product = (state = {}, action) => {
   switch (action.type) {
     case ADD_PRODUCT_REQUEST:
     case GET_PRODUCTS_REQUEST:
+    case UPDATE_PRODUCT_REQUEST:
+    case DELETE_PRODUCT_REQUEST:
     case GET_PRODUCT_REQUEST:
       return { ...state, loading: true };
     case ADD_PRODUCT_SUCCESS:
@@ -24,12 +32,18 @@ export const product = (state = {}, action) => {
       return { ...state, productsData: action.payload, loading: false };
     case GET_PRODUCT_SUCCESS:
       return { ...state, product: action.payload, loading: false };
+    case UPDATE_PRODUCT_SUCCESS:
+    case DELETE_PRODUCT_SUCCESS:
+      return { ...state, message: action.payload, loading: false };
     case ADD_PRODUCT_FAIL:
       return { ...state, error: action.payload, loading: false };
     case GET_PRODUCTS_FAIL:
       return { ...state, productsData: action.payload, loading: false };
     case GET_PRODUCT_FAIL:
       return { ...state, error: action.payload, loading: false };
+    case UPDATE_PRODUCT_FAIL:
+    case DELETE_PRODUCT_FAIL:
+      return { ...state, errorInUorD: action.payload, loading: false };
     case CLEAR_ERRORS:
       return {
         ...state,

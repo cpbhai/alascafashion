@@ -49,3 +49,63 @@ exports.addProduct = async (payload, _id) => {
   payload.theimages = undefined;
   return payload;
 };
+
+exports.deleteProduct = (images) => {
+  const cloudinary = require("cloudinary");
+  images.forEach((data) => cloudinary.v2.uploader.destroy(data.public_id));
+};
+
+exports.updateProduct = async (payload, product) => {
+  //sanitize payload
+  delete payload.images;
+  delete payload.postedBy;
+  delete payload.avgRating;
+  delete payload.ratings;
+  delete payload.createdAt;
+  delete payload.updatedAt;
+  //check if sizes modified
+  if (payload.sizes) {
+    //if modified then validate
+    if (payload.sizes.length == 0)
+      throw { message: "At least One size of product must be choosen" };
+  }
+  //check if colours modified
+  if (payload.colours) {
+    //if modified then validate
+    if (payload.colours.length == 0)
+      throw { message: "At least One colour of product must be choosen" };
+  }
+  //check if images modified
+  if (payload.theimages) {
+    //if modified, validate
+    if (payload.theimages.length == 0)
+      throw { message: "At least One image of product must be choosen" };
+    //if modified, save new images link new array
+    let images = [];
+    const cloudinary = require("cloudinary");
+    if (typeof payload.theimages === "string") {
+      //single image
+      images.push(payload.theimages);
+    } else {
+      images = payload.theimages;
+    }
+    const imagesLinks = [];
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+    //assign req.body.images->new images links
+    payload.images = imagesLinks;
+    delete payload.theimages ;
+    //delete existing images
+    product.images.forEach((data) =>
+      cloudinary.v2.uploader.destroy(data.public_id)
+    );
+  }
+  return payload;
+};
