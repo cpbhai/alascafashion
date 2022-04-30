@@ -232,8 +232,7 @@ export const subcatImgs = (_id) => {
       "https://wholesalemantra.com/images/Products/Big1/Georgette-Straight-Salwar-Kameez-Wholesaler-Embroidered-Ladies-Suits-Supplier-WSM-1593_4.jpeg",
     "626505bea8fc44666c191d88":
       "https://i.pinimg.com/564x/3d/1a/1c/3d1a1ce7d440d307e533c5bf44d86a4b.jpg",
-    "6266eac6c2ecfe2a9122444c":
-      "https://i.pinimg.com/originals/f3/98/1b/f3981bcc725a627932d78848a9d5cf4a.jpg",
+    "6266eac6c2ecfe2a9122444c": "/slides/4.jpeg",
   };
   return images[_id];
 };
