@@ -89,6 +89,7 @@ const EditProduct = () => {
           ...product,
           ["category"]: product.category._id,
           ["subcategory"]: product.subcategory._id,
+          ["thumbnail"]: Number(product.thumbnail) + 1,
         }
       : initialState
   );
