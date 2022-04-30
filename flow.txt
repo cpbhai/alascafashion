@@ -1,7 +1,6 @@
-about us
+u, d product supplier
 privacy policy
 terms and conditions
 
-edit product supplier
 my orders page for supplier.
-Supplier Pages- My Products, CRUD of specific product
+Supplier Pages- My Products

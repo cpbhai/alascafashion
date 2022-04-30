@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import SendNotif from "../../../utils/SendNotif";
 import Loading from "../../Design/Loading/Loading";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const dispatch = useDispatch();
@@ -48,75 +49,81 @@ const Footer = () => {
           <div>
             <p className="heading">Quick Navigation</p>
             <p className="para">
-              <a href="/products" className="negateUnderLine white">
+              <Link
+                to="/products?sortBy=latest"
+                className="negateUnderLine white"
+              >
                 Products
-              </a>
+              </Link>
             </p>
             <p className="para">
-              <a
-                href="/products?category=62650572a8fc44666c191d7c&amp;subcategory=626505b9a8fc44666c191d85"
+              <Link
+                to="/products?sortBy=latest&amp;category=62650572a8fc44666c191d7c&amp;subcategory=626505b9a8fc44666c191d85"
                 className="negateUnderLine white"
               >
                 Suits
-              </a>
+              </Link>
             </p>
             <p className="para">
-              <a
-                href="/products?category=62650572a8fc44666c191d7c&amp;subcategory=626505a6a8fc44666c191d7f"
+              <Link
+                to="/products?sortBy=latest&amp;category=62650572a8fc44666c191d7c&amp;subcategory=626505a6a8fc44666c191d7f"
                 className="negateUnderLine white"
               >
                 Lehengas
-              </a>
+              </Link>
             </p>
             <p className="para">
-              <a
-                href="/products?category=62650572a8fc44666c191d7c&amp;subcategory=626505b5a8fc44666c191d82"
+              <Link
+                to="/products?sortBy=latest&amp;category=62650572a8fc44666c191d7c&amp;subcategory=626505b5a8fc44666c191d82"
                 className="negateUnderLine white"
               >
                 Sarees
-              </a>
+              </Link>
             </p>
           </div>
           <div>
             <p className="heading">Important Links</p>
             <p className="para">
-              <a href="/about-us" className="negateUnderLine white">
+              <Link to="/about-us" className="negateUnderLine white">
                 About Us
-              </a>
+              </Link>
             </p>
 
             <p className="para">
-              <a href="/privacy-policy" className="negateUnderLine white">
+              <Link to="/privacy-policy" className="negateUnderLine white">
                 Privacy Policy
-              </a>
+              </Link>
             </p>
 
             <p className="para">
-              <a href="/terms-and-conditions" className="negateUnderLine white">
+              <Link
+                to="/terms-and-conditions"
+                className="negateUnderLine white"
+              >
                 Terms &amp; Conditions
-              </a>
+              </Link>
             </p>
 
             <p className="para">
-              <a href="/faqs" className="negateUnderLine white">
+              <Link to="/faqs" className="negateUnderLine white">
                 FAQs
-              </a>
+              </Link>
             </p>
           </div>
           <div>
             <p className="heading">Contact Us</p>
             <p className="para">
-              <a href="tel:+917055335905" className="negateUnderLine white">
+              <Link to="tel:+917055335905" className="negateUnderLine white">
                 +91-7055335905
-              </a>
+              </Link>
             </p>
             <p className="para">
-              <a
-                href="mailto:alascafashion@gmail.com"
+              <Link
+                to="mailto:alascafashion@gmail.com"
                 className="negateUnderLine white"
               >
                 alascafashion@gmail.com
-              </a>
+              </Link>
             </p>
             <p className="para">
               Address: 35, Golf Course Rd, Suncity, Sector 54, Gurgaon, Haryana

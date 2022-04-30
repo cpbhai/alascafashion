@@ -49,10 +49,11 @@ const AddProduct = () => {
     if (message) {
       dispatch(SendNotif("success", message));
       dispatch(clearMessages());
+      localStorage.removeItem("addProdSavedData");
       navigate("/");
     }
   }, [dispatch, cats, navigate, error, message]);
-  const [values, setValues] = useState({
+  const initialState = {
     title: "",
     description: "",
     thumbnail: "",
@@ -65,7 +66,22 @@ const AddProduct = () => {
     cost: "",
     category: null,
     subcategory: null,
-  });
+  };
+  let addProdSavedData = localStorage.getItem("addProdSavedData");
+  if (addProdSavedData) {
+    try {
+      addProdSavedData = JSON.parse(addProdSavedData);
+    } catch (err) {
+      localStorage.removeItem("addProdSavedData");
+      addProdSavedData = initialState;
+    }
+    addProdSavedData.sizes = addProdSavedData.colours = [];
+    addProdSavedData.specifications = initialState.specifications;
+    addProdSavedData.category = addProdSavedData.subcategory = null;
+  } else localStorage.setItem("addProdSavedData", JSON.stringify(initialState));
+  const [values, setValues] = useState(
+    addProdSavedData ? addProdSavedData : initialState
+  );
   const {
     title,
     description,
@@ -196,6 +212,7 @@ const AddProduct = () => {
         dispatch(SendNotif("warning", "Allowed Values are: 1-5"));
       }
     } else newstate[name] = value;
+    localStorage.setItem("addProdSavedData", JSON.stringify(newstate));
     setValues(newstate);
   };
   return (

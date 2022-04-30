@@ -30,6 +30,7 @@ import Cart from "./components/Cart/Cart";
 import ClientOrders from "./components/Order/Client/orders";
 import Error404 from "./components/Error404";
 import UFab from "./components/Design/UFab/UFab";
+import About from "./components/Other/About";
 // import Swal from "sweetalert2";
 function App() {
   const { loading, user } = useSelector((state) => state.user);
@@ -80,6 +81,7 @@ function App() {
           }
         />
         {/* <Route exact path="/my-orders" element={<SupplierOrders />} /> */}
+        <Route exact path="/about-us" element={<About />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <UFab />

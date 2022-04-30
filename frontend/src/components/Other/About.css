@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap");
+/* Phone Portrait and Landscape  70vh === 344 X 484*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .aboutPara {
+    max-width: 300px;
+    font-size: 22px;
+    margin: 20px auto;
+    font-family: "Playfair Display", serif;
+  }
+}
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .aboutPara {
+    max-width: 600px;
+    font-size: 22px;
+    margin: 40px auto;
+    font-family: "Playfair Display", serif;
+  }
+}
+/* Desktop No retina */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .aboutPara {
+    max-width: 700px;
+    font-size: 22px;
+    margin: 40px auto;
+    font-family: "Playfair Display", serif;
+  }
+}
