@@ -20,6 +20,7 @@ import MetaData from "../../../utils/MetaData";
 import ProductCard from "../ProductCard/ProductCard";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { Link as RLink } from "react-router-dom";
+import $ from "jquery";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -132,6 +133,7 @@ const Product = () => {
                 src={product.images[img].url}
                 alt="///"
                 className="prodImg"
+                id="prodImg"
                 title={product.description}
               />
               <br></br>
@@ -140,7 +142,11 @@ const Product = () => {
                   src={product.images[idx].url}
                   alt="///"
                   key={idx}
-                  onClick={() => setImg(idx)}
+                  onClick={() => {
+                    $("#prodImg").fadeOut();
+                    $("#prodImg").fadeIn();
+                    setImg(idx);
+                  }}
                   className={`prodImgPrev ${isActive(idx)}`}
                   title={product.description}
                 />
