@@ -66,7 +66,7 @@ const Cart = () => {
       },
       prefill: {
         name,
-        email: user.email,
+        // email: user.email,
         contact: phone,
       },
     };

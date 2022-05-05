@@ -11,8 +11,8 @@ const cors = require("cors");
 const expressSanitizer = require("express-sanitizer");
 const logger = require("morgan");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "5mb" }));
+app.use(bodyParser.urlencoded({ limit: "5mb", extended: true }));
 app.use(logger("dev"));
 app.use(fileUpload());
 app.use(cookieParser());

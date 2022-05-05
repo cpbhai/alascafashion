@@ -212,7 +212,7 @@ const Product = () => {
                   Add to Cart
                 </Button>
                 <StyledRating
-                  value={product.avgRating}
+                  value={4.5}
                   readOnly
                   precision={0.5}
                   sx={{

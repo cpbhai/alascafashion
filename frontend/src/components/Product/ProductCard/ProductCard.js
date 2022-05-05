@@ -56,7 +56,7 @@ const ProductCard = ({ data }) => {
           </Typography>
           <div className="textCenter">
             <StyledRating
-              value={data.avgRating}
+              value={4.5}
               readOnly
               precision={0.5}
               icon={<FavoriteIcon fontSize="small" />}

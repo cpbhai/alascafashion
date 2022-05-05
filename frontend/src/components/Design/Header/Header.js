@@ -97,12 +97,12 @@ const Header = () => {
               </Link>
               {user ? (
                 <IconButton onClick={handleLogout}>
-                  <LogoutIcon color="error" />
+                  <LogoutIcon color="#fff" />
                 </IconButton>
               ) : (
                 <Link to="/signup">
                   <IconButton>
-                    <AccountCircleIcon sx={{ backgroundColor: "#fff" }} />
+                    <AccountCircleIcon sx={{ color: "#fff" }} />
                   </IconButton>
                 </Link>
               )}
