@@ -49,11 +49,7 @@ const Login = () => {
       <div className="LoginHeight"></div>
       <form className="loginForm dFlexWrap justfyeven">
         <div>
-          <img
-            src="https://www.cbi-sarl.org/images/register-fig3.png"
-            alt=""
-            className="loginImage"
-          />
+          <img src="/loginBg.png" alt="" className="loginImage" />
         </div>
         <div className="loginForInputs">
           <Typography variant="h5" gutterBottom component="div" sx={{ ml: 10 }}>

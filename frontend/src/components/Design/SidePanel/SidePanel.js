@@ -7,6 +7,9 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
+import PolicyIcon from "@mui/icons-material/Policy";
+import GavelIcon from "@mui/icons-material/Gavel";
+import InfoIcon from "@mui/icons-material/Info";
 import { useDispatch, useSelector } from "react-redux";
 import { HIDE_SIDE_PANEL } from "../../../constants/design";
 import { Link } from "react-router-dom";
@@ -102,6 +105,30 @@ const MainDrawer = () => {
             </div>
           </Link>
         )}
+        <Link to="/privacy-policy" className="negateUnderLine">
+          <div className="mdNormal ">
+            <Grid container alignItems="center" className="mdItem" gap={0.3}>
+              <PolicyIcon sx={{ mr: 1 }} />
+              Privacy Policy
+            </Grid>
+          </div>
+        </Link>
+        <Link to="/terms-and-conditions" className="negateUnderLine">
+          <div className="mdNormal ">
+            <Grid container alignItems="center" className="mdItem" gap={0.3}>
+              <GavelIcon sx={{ mr: 1 }} />
+              Terms &amp; Conditions
+            </Grid>
+          </div>
+        </Link>
+        <Link to="/about-us" className="negateUnderLine">
+          <div className="mdNormal ">
+            <Grid container alignItems="center" className="mdItem" gap={0.3}>
+              <InfoIcon sx={{ mr: 1 }} />
+              About Us
+            </Grid>
+          </div>
+        </Link>
       </div>
     </Fragment>
   );

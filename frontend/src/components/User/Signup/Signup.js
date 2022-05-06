@@ -52,11 +52,7 @@ const Signup = () => {
       <div className="SignupHeight"></div>
       <form className="signupForm dFlexWrap justfyeven">
         <div>
-          <img
-            src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
-            alt=""
-            className="signupImage"
-          />
+          <img src="/signupBg.png" alt="" className="signupImage" />
         </div>
         <div className="signupForInputs">
           <Typography variant="h5" gutterBottom component="div" sx={{ ml: 8 }}>
