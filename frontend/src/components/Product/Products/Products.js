@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../actions/product";
 import Loading from "../../Design/Loading/Loading";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import { getCats, getSubCats } from "../../../actions/catandsubcat";
 import SearchIcon from "@mui/icons-material/Search";
@@ -22,10 +22,11 @@ const Products = () => {
   const { cats, subcats } = useSelector((state) => state.catandsubcat);
 
   const query = new URLSearchParams(useLocation().search);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCats());
-    dispatch(getSubCats("626505a6a8fc44666c191d7f"));
+    dispatch(getSubCats(""));
     if (cats && cats.length && cats[0].label !== "All") {
       cats.unshift({ label: "All", _id: "" });
     }
@@ -41,10 +42,11 @@ const Products = () => {
     cost: [0, 10000],
   });
   const { keyword, cost } = values;
-  const [ops, setOps] = useState(true);
+  const [ops, setOps] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     query.set(name, value);
+    navigate(`/products?${query}`);
     dispatch(getProducts(query));
     setValues({ ...values, [name]: value });
   };
@@ -57,6 +59,7 @@ const Products = () => {
     } else if (type === "SortBy") {
       query.set("sortBy", v._id);
     }
+    navigate(`/products?${query}`);
     dispatch(getProducts(query));
   };
   const handleSliderChange = (event, newValue, activeThumb) => {
@@ -65,10 +68,12 @@ const Products = () => {
   const handleSlider = () => {
     query.set("low", cost[0]);
     query.set("high", cost[1]);
+    navigate(`/products?${query}`);
     dispatch(getProducts(query));
   };
   const handlePage = (v) => {
     query.set("page", v);
+    navigate(`/products?${query}`);
     dispatch(getProducts(query));
   };
 
@@ -97,11 +102,7 @@ const Products = () => {
       </div>
       <FormControlLabel
         control={
-          <Switch
-            defaultChecked
-            onChange={(e) => setOps(e.target.checked)}
-            sx={{ ml: 1 }}
-          />
+          <Switch onChange={(e) => setOps(e.target.checked)} sx={{ ml: 1 }} />
         }
         label="Show Filters"
       />

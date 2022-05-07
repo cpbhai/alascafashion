@@ -668,3 +668,10 @@ exports.newProduct = (product) => {
       `,
   };
 };
+
+exports.visitor = (type) => {
+  return {
+    subject: `Visit Alert - Alasca Fashion`,
+    body: `Visit Alert Alasca Fashion, Type: ${type}`,
+  };
+};

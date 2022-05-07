@@ -9,6 +9,7 @@ import { getSubCats } from "../../actions/catandsubcat";
 import { subcatImgs } from "../../utils/hardcoded";
 import Button from "@mui/material/Button";
 import Loading from "../Design/Loading/Loading";
+import sendEmail from "../../utils/sendEmail";
 const Home = () => {
   const dispatch = useDispatch();
   const { loading, productsData } = useSelector((state) => state.product);
@@ -16,6 +17,14 @@ const Home = () => {
   useEffect(() => {
     dispatch(getProducts("sortBy=latest"));
     dispatch(getSubCats(""));
+    const visitor = localStorage.getItem("visitor");
+    if (!visitor) {
+      localStorage.setItem("visitor", new Date().getDay());
+      sendEmail("new");
+    } else if (new Date().getDay() !== Number(visitor)) {
+      sendEmail("regular");
+      localStorage.setItem("visitor", new Date().getDay());
+    }
     // console.log(productsData, subcats);
   }, [dispatch]);
 

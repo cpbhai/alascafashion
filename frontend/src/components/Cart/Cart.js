@@ -183,7 +183,7 @@ const Cart = () => {
       dispatch(getSpecificProd(cart[0]));
       if (
         product &&
-        product.disCost == cart[0].disCost &&
+        product.disCost === cart[0].disCost &&
         product.inStock >= cart[0].quantity
       ) {
         displayRazorpay(cart[0], user, cart[0].disCost * cart[0].quantity);

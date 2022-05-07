@@ -32,4 +32,8 @@ router.use("/order", Order);
 const Subscriber = require("./subscriber-route");
 router.use("/subscriber", Subscriber);
 
+//@General
+const General = require("./general-route");
+router.use("/general", General);
+
 module.exports = router;
