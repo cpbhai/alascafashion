@@ -31,7 +31,7 @@
 .mainDrawer {
   /* text-decoration: none; */
   left: -100%;
-  width: 30vh;
+  width: 50vh;
   background-color: rgb(247, 7, 147);
   z-index: 11;
   color: #fff;

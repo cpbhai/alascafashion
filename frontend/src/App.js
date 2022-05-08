@@ -32,6 +32,7 @@ import Error404 from "./components/Error404";
 import UFab from "./components/Design/UFab/UFab";
 import About from "./components/Other/About";
 import EditProduct from "./components/Product/EditProduct/EditProduct";
+import ScrollToTop from "./components/ScrollToTop";
 // import Swal from "sweetalert2";
 function App() {
   const { loading, user } = useSelector((state) => state.user);
@@ -49,6 +50,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <ScrollToTop />
       <SidePanel />
       <Loading show={loading} />
       <Notify />

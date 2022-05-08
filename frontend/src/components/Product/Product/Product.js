@@ -7,13 +7,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../Design/Loading/Loading";
 import SendNotif from "../../../utils/SendNotif";
 import Chip from "@mui/material/Chip";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import MetaData from "../../../utils/MetaData";
@@ -108,25 +105,6 @@ const Product = () => {
       <div className="productHeight"></div>
       {product && (
         <>
-          <div className="dFlex justfycent productBread">
-            <Breadcrumbs aria-label="breadcrumb" color="white">
-              <Link
-                underline="hover"
-                color="white"
-                href={`/products?category=${product.category._id}`}
-              >
-                {product.category.title}
-              </Link>
-              <Link
-                underline="hover"
-                color="white"
-                href={`/products?category=${product.category._id}&subcategory=${product.subcategory._id}`}
-              >
-                {product.subcategory.title}
-              </Link>
-              <Typography color="white">{product.title}</Typography>
-            </Breadcrumbs>
-          </div>
           <div className="dFlexWrap justfyeven">
             <div>
               <img
