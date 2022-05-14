@@ -30,11 +30,8 @@ const Home = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading show={true} />
-      ) : (
-        <MetaData title="India's Leading Fashion Store | Alasca Fashion" />
-      )}
+      <MetaData title="India's Leading Fashion Store | Alasca Fashion" />
+      {loading && <Loading show={true} />}
       <div>
         <div className="homeHeight"></div>
         <div className="homeTileDivDesk">
