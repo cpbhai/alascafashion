@@ -38,6 +38,8 @@ const Product = () => {
       dispatch(clearErrors());
     }
     dispatch(getSpecificProd(_id));
+  }, [dispatch, error, _id]);
+  useEffect(() => {
     if (product) {
       setImg(product.thumbnail);
       dispatch(
@@ -46,7 +48,8 @@ const Product = () => {
         )
       );
     }
-  }, [dispatch, error, _id]);
+  }, [dispatch, product]);
+
   const [size, setSize] = useState(null);
   const [colour, setColour] = useState(null);
   const [img, setImg] = useState(0);
