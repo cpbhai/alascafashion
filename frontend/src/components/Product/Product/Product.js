@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getProducts, getSpecificProd } from "../../../actions/product";
+import {
+  getProducts,
+  getSpecificProd,
+  clearErrors,
+} from "../../../actions/product";
 import { addToCart } from "../../../actions/design";
 import "./Product.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,9 +35,10 @@ const Product = () => {
     if (error) {
       navigate("/");
       dispatch(SendNotif("error", error));
+      dispatch(clearErrors());
     }
-    if (!product) dispatch(getSpecificProd(_id));
-    else {
+    dispatch(getSpecificProd(_id));
+    if (product) {
       setImg(product.thumbnail);
       dispatch(
         getProducts(
@@ -41,7 +46,7 @@ const Product = () => {
         )
       );
     }
-  }, [dispatch, product, error, navigate]);
+  }, [dispatch, error, _id]);
   const [size, setSize] = useState(null);
   const [colour, setColour] = useState(null);
   const [img, setImg] = useState(0);
@@ -108,7 +113,7 @@ const Product = () => {
           <div className="dFlexWrap justfyeven">
             <div>
               <img
-                src={product.images[img].url}
+                src={product.images[img] ? product.images[img].url : ""}
                 alt="///"
                 className="prodImg"
                 id="prodImg"

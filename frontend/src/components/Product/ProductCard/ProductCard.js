@@ -11,8 +11,10 @@ import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import "./ProductCard.css";
 import CardStyle from "./CardStyle";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ data }) => {
+  const navigate = useNavigate();
   const useStyles = makeStyles(CardStyle());
   const classes = useStyles();
   const StyledRating = styled(Rating)({
@@ -23,9 +25,7 @@ const ProductCard = ({ data }) => {
       className={classes.card}
       title={`${data.description.substring(0, 200)}...`}
     >
-      <CardActionArea
-        onClick={() => window.open(`/product/${data._id}`, "_blank")}
-      >
+      <CardActionArea onClick={() => navigate(`/product/${data._id}`)}>
         <img
           className="prodCardImg"
           src={`${data.images[data.thumbnail].url}`}
