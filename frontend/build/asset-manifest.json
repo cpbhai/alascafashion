@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2935038d.css",
+    "main.js": "/static/js/main.cf2a4429.js",
+    "static/media/girl-holds-fashion-shopping-bag-beauty.jpg": "/static/media/girl-holds-fashion-shopping-bag-beauty.50b100c4e28e640b0bc0.jpg",
+    "static/media/2.jpeg": "/static/media/2.bbafe58f41245028cc10.jpeg",
+    "index.html": "/index.html",
+    "main.2935038d.css.map": "/static/css/main.2935038d.css.map",
+    "main.cf2a4429.js.map": "/static/js/main.cf2a4429.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2935038d.css",
+    "static/js/main.cf2a4429.js"
+  ]
+}

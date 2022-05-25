@@ -211,7 +211,10 @@ const Cart = () => {
       )}
       {cart.length ? (
         <div className="cartDiv dFlexWrap justfyeven">
-          <div>
+          <div
+            onClick={() => navigate(`/product/${cart[0]._id}`)}
+            style={{ cursor: "pointer" }}
+          >
             <img
               src={cart[0].images[cart[0].thumbnail].url}
               alt="..."

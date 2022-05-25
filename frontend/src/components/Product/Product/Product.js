@@ -78,14 +78,11 @@ const Product = () => {
     // console.log(cart);
     if (colour === null)
       return dispatch(
-        SendNotif(
-          "error",
-          "Please select the colour , out of available colours"
-        )
+        SendNotif("error", "Please select the colour, out of available colours")
       );
     if (size === null)
       return dispatch(
-        SendNotif("error", "Please select the size , out of available sizes")
+        SendNotif("error", "Please select the size, out of available sizes")
       );
     dispatch(
       addToCart({ ...product, size, colour, quantity: 1 }, "product-page")
@@ -95,7 +92,7 @@ const Product = () => {
     );
     setColour(null);
     setSize(null);
-    // console.log(cart);
+    navigate("/cart");
   };
 
   return (
