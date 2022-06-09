@@ -1,5 +1,6 @@
 <%-  include("../components/layout/header")%>
-<title><%= locals.product?.title%></title>
+<meta name="description" content="<%=locals.product?.title%>, <%=locals.product?.description%>" />
+<title><%= locals.product?.title%> | Alasca Fashion</title>
 <style>
     .prod-img{
         width: 21rem;
@@ -14,6 +15,22 @@
     .prod-desc{
         font-family: 'Joan', serif;
     }
+    .product-card{
+        width: 10rem;
+        cursor: pointer;
+    }
+    .prod-heading{
+      font-family: 'Tiro Telugu', serif;
+      font-size: 1.4rem;
+    }
+    .prod-imgs{
+      width:4rem;
+      height: 5.6rem;
+      object-fit: cover;
+    }
+    .active{
+      border:2px solid tomato;
+    }
     /* tab */
     @media (min-width: 40rem) {
         .prod-img {
@@ -21,6 +38,12 @@
         }
         .prod-details-div{
             width: 20rem;
+        }
+        .product-card {
+            width: 9rem;
+        }
+        .prod-imgs{
+          width:3.8rem;
         }
     }
     /*lap */
@@ -31,8 +54,28 @@
         .prod-details-div{
             width:25rem;
         }
+        .product-card {
+            width: 15rem;
+        }
+        .prod-imgs{
+          width:4.8rem;
+        }
     }
 </style>
+<script>
+  function prodChangeThumbnail(idx, url){
+    $("#prod-img").fadeOut();
+    $("#prod-img").fadeIn();
+    setTimeout(() => {
+      $(".prod-img")[0].src = url;
+    }, 400);
+    const list = $(".prod-imgs").toArray();
+    list.forEach((elem)=>{
+        elem.classList.remove("active");
+    });
+    list[idx].classList.add("active");
+  }
+</script>
 </head>
 <body>
   <%- include("../components/layout/navbar") %>
@@ -46,15 +89,17 @@
     <%}%>
   <%if(locals.message){ %>
     <div class="bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-green-700 inline-flex items-center w-full" role="alert">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
-        </svg>
-        <%=locals.message%>
+      <p><i class="fa-solid fa-cart-plus"></i> <%=locals.message%></p>        
       </div>
     <%}%>
   <div class="flex flex-wrap justify-evenly mt-2">
       <div class="prod-img-div">
-          <img class="prod-img" src="<%=locals.product?.images[locals.product?.thumbnail]?.url%>" alt="">
+          <img class="prod-img" id="prod-img" src="<%=locals.product?.images[locals.product?.thumbnail]?.url%>" alt="">
+          <div class="flex justify-evenly mt-1">
+            <%locals.product?.images?.map((each, idx)=>{%>
+              <img onclick="prodChangeThumbnail(<%=idx%>,<%=JSON.stringify(locals.product?.images?.at(idx)?.url)%>)" class="<%=locals.product?.thumbnail==idx?`active`:``%> prod-imgs" src="<%=each.url%>" alt="">
+            <%});%>
+          </div>
       </div>
       <div class="prod-details-div">
           <p class="prod-title text-center"><%=locals.product?.title%></p>
@@ -85,6 +130,7 @@
           <div class="flex justify-center">
              <form method="POST">
                 <input name="product" hidden value="<%=JSON.stringify(locals.product);%>">
+                <input name="similar" hidden value="<%=JSON.stringify(locals.similar);%>">
                 <input
                 name="quantity"
                 type="number"
@@ -97,6 +143,22 @@
           </div>
       </div>
       
+  </div>
+    <p class="prod-heading font-bold mb-2 mt-10 text-center"><%=locals.product?.subcategory?.title%> that you may like</p>
+    <div class="flex flex-wrap justify-evenly">
+    <% locals.similar?.map((each)=>{ %>
+      <a href="/collection/product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+          <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
+          <div class="text-center p-1">
+            <p class="truncate del"><%=each.title%></p>
+            <p class="text-gray-700 text-base text-center">
+              <span class="text-black-500">₹ <%=each.disCost%></span>
+              <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
+              <span class="text-green-500 ml-3 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
+            </p>
+          </div>
+      </a>
+    <%});%>
   </div>
 </body>
 <%-  include("../components/layout/footer")%>

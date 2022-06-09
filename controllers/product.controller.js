@@ -1,7 +1,7 @@
 const productModel = require("../models/product.model");
 // const userModel = require("../models/user.model");
 // const subscriberModel = require("../models/subscriber-model");
-const { isValidToken } = require("../middlewares/auth");
+const { isValidToken, fetchCart } = require("../middlewares/auth");
 // const {
 //   addProduct,
 //   deleteProduct,
@@ -101,6 +101,7 @@ exports.updateProduct = async (req, res) => {
 
 exports.specific = async (req, res) => {
   const user = isValidToken(req.cookies.token, res);
+  const cart = fetchCart(req.cookies.cart, res);
   try {
     if (!mongoose.isValidObjectId(req.params._id))
       throw { message: "No such product was found" };
@@ -134,17 +135,29 @@ exports.specific = async (req, res) => {
       },
     ]);
     if (product.length == 0) throw { message: "No such product was found" };
-    res.render("pages/product", { product: product[0], user });
+    const similar = await productModel.aggregate([
+      {
+        $match: {
+          _id: { $ne: ObjectId(req.params._id) },
+          category: product[0].category._id,
+          subcategory: product[0].subcategory._id,
+        },
+      },
+      { $sample: { size: 10 } },
+    ]);
+    res.render("pages/product", { product: product[0], user, cart, similar });
   } catch (err) {
+    console.log(err);
     res.redirect("/");
   }
 };
 
 exports.addToCart = (req, res) => {
   const user = isValidToken(req.cookies.token, res);
-  let { product } = req.body;
+  let { product, similar } = req.body;
   product = JSON.parse(product);
-  let cart = req.cookies.cart;
+  similar = JSON.parse(similar);
+  let cart = fetchCart(req.cookies.cart, res);
   try {
     let { quantity } = req.body;
     if (!quantity)
@@ -152,11 +165,12 @@ exports.addToCart = (req, res) => {
         user,
         error: "Quantity is missing",
         product,
+        similar,
+        cart,
       });
     // console.log(cart);
     quantity = Math.abs(quantity);
     if (cart) {
-      cart = JSON.parse(cart);
       let updatedQty = false;
       cart = cart.map((each) => {
         if (each._id == req.params._id) {
@@ -170,7 +184,13 @@ exports.addToCart = (req, res) => {
     } else {
       res.cookie("cart", JSON.stringify([{ _id: req.params._id, quantity }]));
     }
-    res.render("pages/product", { user, message: "Added to Cart", product });
+    res.render("pages/product", {
+      user,
+      message: "Added to Cart",
+      product,
+      similar,
+      cart,
+    });
   } catch (err) {
     console.log(err);
     res.cookie("cart", "[]");
@@ -178,11 +198,14 @@ exports.addToCart = (req, res) => {
       user,
       error: "Something went Wrong",
       product,
+      similar,
+      cart,
     });
   }
 };
-exports.get = async (req, res) => {
+exports.get = async (req, res, reUse) => {
   const user = isValidToken(req.cookies.token, res);
+  const cart = fetchCart(req.cookies.cart, res);
   //   console.log(user);
   try {
     let {
@@ -228,7 +251,8 @@ exports.get = async (req, res) => {
       response.page = page;
       response.noOfPages = 0;
     }
-    res.render("pages/products", { data: response, user });
+    if(reUse) return response.products;
+    res.render("pages/products", { data: response, user, cart });
   } catch (err) {
     res.redirect("/");
   }

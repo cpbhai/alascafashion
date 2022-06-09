@@ -1,6 +1,16 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
+exports.fetchCart = (cart, res) => {
+  if (!cart) return undefined;
+  try {
+    cart = JSON.parse(cart);
+    return cart;
+  } catch (err) {
+    res.cookie("cart", "[]");
+    return undefined;
+  }
+};
 exports.isValidToken = (token, res) => {
   if (!token) return false;
   try {

@@ -1,11 +1,12 @@
 const User = require("../models/user.model");
-const { isValidToken } = require("../middlewares/auth");
+const { isValidToken, fetchCart } = require("../middlewares/auth");
 
 exports.loginPage = (req, res) => {
+  const cart = fetchCart(req.cookies.cart, res);
   if (isValidToken(req.cookies.token, res)) {
     return res.redirect("/");
   }
-  res.render("pages/login");
+  res.render("pages/login", { cart });
 };
 exports.login = async (req, res) => {
   let errors = [];
@@ -31,10 +32,11 @@ exports.login = async (req, res) => {
   }
 };
 exports.registerPage = (req, res) => {
+  const cart = fetchCart(req.cookies.cart, res);
   if (isValidToken(req.cookies.token, res)) {
     return res.redirect("/");
   }
-  res.render("pages/register");
+  res.render("pages/register", { cart });
 };
 exports.register = async (req, res) => {
   let errors = [];

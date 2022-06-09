@@ -1,13 +1,109 @@
 <%-  include("../components/layout/header")%>
-<title>Home</title>
-<script>
-  function clickLogin(){
-    alert("your name, dear home?")
+<meta name="description" content="Alasca Fashion, India's Leading Fashion Store for Suits, Lehengas, Gowns, Sarees and Much More On Exclusive Price" />
+<title>India's Leading Fashion Store | Alasca Fashion</title>
+<link rel="stylesheet" href="css/home.css"> </link>
+<style>
+  .product-card{
+    width: 10rem;
+    cursor: pointer;
   }
-</script>
+  /* tab */
+  @media (min-width: 40rem) {
+    .product-card {
+      width: 45rem;
+    }
+  }
+  /*lap */
+  @media (min-width: 80rem) {
+    .product-card {
+      width: 15rem;
+  }
+}
+</style>
 </head>
 <body>
-  <%- include("../components/layout/navbar") %>
-  <h1>Home Page</h1>
+  <%- include("../components/layout/navbar"); %>
+  <%- include("../components/home/carousel"); %>
+  <div>
+    <div class="homeHeight"></div>
+    <div class="homeTileDivDesk">
+      <p class="homeTileText">Curated Exclusively For you</p>
+      <p class="homeTileBtnPara">
+        <a href="/products?sortBy=latest" class="homeTileLink">
+          View Catalogue
+        </a>
+      </p>
+    </div>
+    <div class="homeTileDivPhon">
+      <p class="homeTileText">Curated Exclusively For you</p>
+      <p class="homeTileBtnPara">
+        <a href="/products?sortBy=latest" class="homeTileLink">
+          View Catalogue
+        </a>
+      </p>
+    </div>
+    <div class="homeTileDivTabl">
+      <p class="homeTileText">Curated Exclusively For you</p>
+      <p class="homeTileBtnPara">
+        <a href="/products?sortBy=latest" class="homeTileLink">
+          View Catalogue
+        </a>
+      </p>
+    </div>
+    <div>
+      <p class="homeLastestTrends">LATEST TRENDS</p>
+      <p class="homeNewLaunches">
+        New launches every day, styles that promise to capture your heart
+      </p>
+    </div>
+    <div class="dFlexWrap justfyeven">
+      <% locals.products?.map((each)=>{ %>
+        <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+            <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
+            <div class="text-center p-1">
+              <p class="truncate del"><%=each.title%></p>
+              <p class="text-gray-700 text-base text-center">
+                <span class="text-black-500">₹ <%=each.disCost%></span>
+                <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
+                <span class="text-green-500 ml-3 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
+              </p>
+            </div>
+        </a>
+    <%});%>
+    </div>
+    <div
+      class="dFlex justfycent"
+      style="margin:15px auto 40px auto;"
+    >
+      <a href="/products?sortBy=latest" class="negateUnderLine">
+        <button style="background:#e91e63">
+          View More
+        </button>
+      </a>
+    </div>
+    <!-- {subcats && (
+      <>
+        <div>
+          <p class="homeCatalogue">CATALOGUE</p>
+          <p class="homeExplore">
+            Explore ours catalogue to get your outfit that flatters your
+            body{" "}
+          </p>
+        </div>
+        <div class="dFlexWrap justfyeven">
+          {subcats.map((each, idx) => (
+            <Link
+              to={`/products?subcategory=${each._id}`}
+              key={idx}
+              class="homeSubcatLink"
+            >
+              <img src={subcatImgs(each._id)} alt={each.label} />
+              <p class="homeSubcatLabel">{each.label}</p>
+            </Link>
+          ))}
+        </div>
+      </>
+    )} -->
+  </div>
 </body>
 <%-  include("../components/layout/footer")%>

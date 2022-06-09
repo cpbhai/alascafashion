@@ -1,9 +1,13 @@
 <%-  include("../components/layout/header")%>
-<title>Products</title>
+<meta name="description" content="Alasca Fashion, India's Leading Fashion Store for Suits, Lehengas, Gowns, Sarees and Much More On Exclusive Price" />
+<title>Products | Alasca Fashion</title>
 <style>
     .product-card{
         width: 10rem;
         cursor: pointer;
+    }
+    .disableLink{
+      pointer-events: none;
     }
      /* tab */
     @media (min-width: 40rem) {
@@ -35,6 +39,27 @@
             </div>
         </a>
     <%});%>
+  </div>
+  <div class="flex justify-center">
+    <nav aria-label="Page navigation example">
+      <ul class="flex list-style-none">
+        <li class="page-item"><a
+          class="<%=locals.data?.page==1?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+          href="?sortBy=latest&page=1%>">First</a></li>
+        <li class="page-item"><a
+          class="<%=locals.data?.page==1?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+          href="?sortBy=latest&page=<%=locals.data?.page-1%>">Previous</a></li>
+        <li class="page-item active"><a
+            class="page-link relative block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
+            href="#"><%=locals.data?.page%></a></li>
+        <li class="page-item"><a
+            class="<%=locals.data?.page==locals.data?.noOfPages?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+            href="?sortBy=latest&page=<%=locals.data?.page+1%>">Next</a></li>
+        <li class="page-item<%=locals.data?.page==locals.data.noOfPages?` disableLink`:``%>"><a
+            class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+            href="?sortBy=latest&page=<%=locals.data?.noOfPages%>">Last</a></li>
+      </ul>
+    </nav>
   </div>
 </body>
 <%-  include("../components/layout/footer")%>
