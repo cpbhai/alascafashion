@@ -17,8 +17,9 @@ app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 
 app.use(require("cookie-parser")());
 
-app.use(express.static(path.join(__dirname, "public")));
 app.use("/", routes);
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res) => {
   res.send("<title>404 - Page Not Found</title><h1>Page Not Found</h1>");

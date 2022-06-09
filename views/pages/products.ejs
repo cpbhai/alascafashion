@@ -28,7 +28,7 @@
   <div class="flex flex-wrap justify-evenly">
     <% locals.data?.products?.map((each)=>{ %>
         <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
-            <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
+            <img class="w-full" src="<%=each.images[each.thumbnail]?.url;%>" alt="Sunset in the mountains">
             <div class="text-center p-1">
               <p class="truncate del"><%=each.title%></p>
               <p class="text-gray-700 text-base text-center">
@@ -40,7 +40,7 @@
         </a>
     <%});%>
   </div>
-  <div class="flex justify-center">
+  <div class="flex justify-center my-10">
     <nav aria-label="Page navigation example">
       <ul class="flex list-style-none">
         <li class="page-item"><a

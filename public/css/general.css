@@ -1,0 +1,21 @@
+.navbar-cart > i {
+  margin: 16px auto auto 16px;
+}
+.navbar-cart > span {
+  font-size: 13px;
+  position: relative;
+  margin-left: -9px;
+  top: -13px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 3px;
+}
+/* tab */
+@media (min-width: 40rem) {
+}
+/*lap */
+@media (min-width: 80rem) {
+  .navbar-cart > i {
+    margin: auto auto auto 16px;
+  }
+}

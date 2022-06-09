@@ -1,7 +1,7 @@
 <%-  include("../components/layout/header")%>
 <meta name="description" content="Alasca Fashion, India's Leading Fashion Store for Suits, Lehengas, Gowns, Sarees and Much More On Exclusive Price" />
 <title>India's Leading Fashion Store | Alasca Fashion</title>
-<link rel="stylesheet" href="css/home.css"> </link>
+<link rel="stylesheet" href="css/home.css"></link>
 <style>
   .product-card{
     width: 10rem;
@@ -26,39 +26,15 @@
   <%- include("../components/home/carousel"); %>
   <div>
     <div class="homeHeight"></div>
-    <div class="homeTileDivDesk">
-      <p class="homeTileText">Curated Exclusively For you</p>
-      <p class="homeTileBtnPara">
-        <a href="/products?sortBy=latest" class="homeTileLink">
-          View Catalogue
-        </a>
-      </p>
-    </div>
-    <div class="homeTileDivPhon">
-      <p class="homeTileText">Curated Exclusively For you</p>
-      <p class="homeTileBtnPara">
-        <a href="/products?sortBy=latest" class="homeTileLink">
-          View Catalogue
-        </a>
-      </p>
-    </div>
-    <div class="homeTileDivTabl">
-      <p class="homeTileText">Curated Exclusively For you</p>
-      <p class="homeTileBtnPara">
-        <a href="/products?sortBy=latest" class="homeTileLink">
-          View Catalogue
-        </a>
-      </p>
-    </div>
     <div>
       <p class="homeLastestTrends">LATEST TRENDS</p>
       <p class="homeNewLaunches">
         New launches every day, styles that promise to capture your heart
       </p>
     </div>
-    <div class="dFlexWrap justfyeven">
+    <div class="flex flex-wrap justify-evenly">
       <% locals.products?.map((each)=>{ %>
-        <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+        <a href="collection/product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
             <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
             <div class="text-center p-1">
               <p class="truncate del"><%=each.title%></p>
@@ -75,14 +51,12 @@
       class="dFlex justfycent"
       style="margin:15px auto 40px auto;"
     >
-      <a href="/products?sortBy=latest" class="negateUnderLine">
-        <button style="background:#e91e63">
+      <a href="/collection/products?sortBy=latest" class="flex justify-center my-10 negateUnderLine">
+        <button style="background:#e91e63;color:#fff;padding:10px;">
           View More
         </button>
       </a>
     </div>
-    <!-- {subcats && (
-      <>
         <div>
           <p class="homeCatalogue">CATALOGUE</p>
           <p class="homeExplore">
@@ -90,20 +64,36 @@
             body{" "}
           </p>
         </div>
-        <div class="dFlexWrap justfyeven">
-          {subcats.map((each, idx) => (
-            <Link
-              to={`/products?subcategory=${each._id}`}
-              key={idx}
+        <div class="flex flex-wrap justify-evenly">
+            <a
+              href="/collection/products?subcategory=626505a6a8fc44666c191d7f&sortBy=latest"
               class="homeSubcatLink"
             >
-              <img src={subcatImgs(each._id)} alt={each.label} />
-              <p class="homeSubcatLabel">{each.label}</p>
-            </Link>
-          ))}
+              <img src="lehenga.jpeg" alt={each.label} />
+              <p class="homeSubcatLabel">Lehengas</p>
+            </a>
+            <a
+              href="/collection/products?subcategory=626505b5a8fc44666c191d82&sortBy=latest"
+              class="homeSubcatLink"
+            >
+              <img src="saree.jpeg" alt={each.label} />
+              <p class="homeSubcatLabel">Sarees</p>
+            </a>
+            <a
+              href="/collection/products?subcategory=626505b9a8fc44666c191d85&sortBy=latest"
+              class="homeSubcatLink"
+            >
+              <img src="suit.jpeg" alt={each.label} />
+              <p class="homeSubcatLabel">Suits</p>
+            </a>
+            <a
+              href="/collection/products?subcategory=6266eac6c2ecfe2a9122444c&sortBy=latest"
+              class="homeSubcatLink"
+            >
+              <img src="4.jpeg" alt={each.label} />
+              <p class="homeSubcatLabel">Gowns</p>
+            </a>
         </div>
-      </>
-    )} -->
   </div>
 </body>
 <%-  include("../components/layout/footer")%>

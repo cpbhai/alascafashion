@@ -105,6 +105,12 @@
           <p class="prod-title text-center"><%=locals.product?.title%></p>
           <p class="font-semibold">Description</p>
           <p class="prod-desc text-center mb-2"><%=locals.product?.description%></p>
+          <p class="my-2 text-center text-lg">
+            <span class="text-black-500">₹ <%=locals.product?.disCost%></span>
+            <span class="text-red-500 ml-10">₹ <del><%=locals.product?.cost%></del></span>
+            <span class="text-green-500 ml-10 font-bold text-2xl"><%=parseInt(100-(locals.product?.disCost*100/locals.product?.cost));%>%</span>
+          </p>
+          <%- include("../components/product/rating") %>
           <p class="text-start font-semibold">Colours</p>
           <div class="flex flex-wrap justify-center space-x-1">
            <%locals.product?.colours?.map((each)=>{%>
@@ -154,7 +160,7 @@
             <p class="text-gray-700 text-base text-center">
               <span class="text-black-500">₹ <%=each.disCost%></span>
               <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
-              <span class="text-green-500 ml-3 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
+              <span class="text-green-500 ml-3 font-bold text-lg"><%=parseInt(100-(each.disCost*100/each.cost));%>%</span>
             </p>
           </div>
       </a>

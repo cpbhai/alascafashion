@@ -203,10 +203,9 @@ exports.addToCart = (req, res) => {
     });
   }
 };
-exports.get = async (req, res, reUse) => {
+exports.get = async (req, res) => {
   const user = isValidToken(req.cookies.token, res);
   const cart = fetchCart(req.cookies.cart, res);
-  //   console.log(user);
   try {
     let {
       getQuery,
@@ -251,7 +250,6 @@ exports.get = async (req, res, reUse) => {
       response.page = page;
       response.noOfPages = 0;
     }
-    if(reUse) return response.products;
     res.render("pages/products", { data: response, user, cart });
   } catch (err) {
     res.redirect("/");
