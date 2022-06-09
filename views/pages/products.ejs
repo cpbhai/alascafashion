@@ -1,0 +1,40 @@
+<%-  include("../components/layout/header")%>
+<title>Products</title>
+<style>
+    .product-card{
+        width: 10rem;
+        cursor: pointer;
+    }
+     /* tab */
+    @media (min-width: 40rem) {
+        .product-card {
+            width: 45rem;
+        }
+    }
+    /*lap */
+    @media (min-width: 80rem) {
+        .product-card {
+            width: 15rem;
+        }
+    }
+</style>
+</head>
+<body>
+  <%- include("../components/layout/navbar") %>
+  <div class="flex flex-wrap justify-evenly">
+    <% locals.data?.products?.map((each)=>{ %>
+        <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+            <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
+            <div class="text-center p-1">
+              <p class="truncate del"><%=each.title%></p>
+              <p class="text-gray-700 text-base text-center">
+                <span class="text-black-500">₹ <%=each.disCost%></span>
+                <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
+                <span class="text-green-500 ml-3 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
+              </p>
+            </div>
+        </a>
+    <%});%>
+  </div>
+</body>
+<%-  include("../components/layout/footer")%>

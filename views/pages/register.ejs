@@ -1,0 +1,71 @@
+<%-  include("../components/layout/header")%>
+<title>Regiater -User</title>
+<style>
+  .reg-img{
+    width: 21rem;
+  }
+  .reg-main-div{
+    margin-top: 2.5vh;
+  }
+  /* tab */
+  @media (min-width: 40rem) {
+    .reg-img {
+      width: 45rem;
+    }
+    .reg-main-div{
+      margin-top: 3vh;
+    }
+  }
+  /*lap */
+  @media (min-width: 80rem) {
+    .reg-img {
+      width: 40rem;
+    }
+    .reg-main-div{
+      margin-top: 5vh;
+    }
+  }
+</style>
+</head>
+<body>
+  <%- include("../components/layout/navbar") %>
+  
+ 
+  <div class="flex flex-wrap justify-evenly reg-main-div">
+    <div>
+      <img class="reg-img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+    </div>
+    <div class="mt-5">
+      <form method="POST" class="w-80">
+        <% locals.errors?.forEach((error)=>{%>
+          <p class="p-1 mb-1 text-xs text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+            <%=error%>
+          </p>
+          <%});%>
+        <div class="mb-2">
+          <label  class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Your Name</label>
+          <input name="name" type="text" value="<%=locals.formValues?.name%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+        </div>
+        <div class="mb-2">
+          <label  class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Your Email</label>
+          <input name="email" type="email" value="<%=locals.formValues?.email%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+        </div>
+        <div class="mb-2">
+          <label  class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
+          <input name="password" type="password" value="<%=locals.formValues?.password%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+        </div>
+        <div class="mb-5">
+          <label  class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Your phone</label>
+          <input name="phone" type="number" value="<%=locals.formValues?.phone%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+        </div>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register Me</button>
+        <a href="login" class="ml-10 text-stone-900 underline decoration-sky-500">Have an Account?</a>
+      </form>
+    </div>
+  </div>
+  
+
+
+  
+</body>
+<%-  include("../components/layout/footer")%>
