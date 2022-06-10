@@ -16,3 +16,7 @@ function hideHamburger() {
     }, 300);
   }
 }
+
+function redirect(path) {
+  window.open(path, "_self");
+}

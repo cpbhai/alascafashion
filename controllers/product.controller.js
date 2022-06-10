@@ -133,7 +133,29 @@ exports.specific = async (req, res) => {
       {
         $unwind: "$subcategory",
       },
+      {
+        $project: {
+          category: {
+            title: 0,
+            createdAt: 0,
+            updatedAt: 0,
+            __v: 0,
+          },
+          subcategory: {
+            category: 0,
+            createdAt: 0,
+            updatedAt: 0,
+            __v: 0,
+          },
+          avgRating: 0,
+          ratings: 0,
+          createdAt: 0,
+          updatedAt: 0,
+          __v: 0,
+        },
+      },
     ]);
+    // console.log("product", product);
     if (product.length == 0) throw { message: "No such product was found" };
     const similar = await productModel.aggregate([
       {
@@ -147,7 +169,7 @@ exports.specific = async (req, res) => {
     ]);
     res.render("pages/product", { product: product[0], user, cart, similar });
   } catch (err) {
-    console.log(err);
+    console.log("LE", err);
     res.redirect("/");
   }
 };
@@ -159,7 +181,7 @@ exports.addToCart = (req, res) => {
   similar = JSON.parse(similar);
   let cart = fetchCart(req.cookies.cart, res);
   try {
-    let { quantity } = req.body;
+    let { quantity, colour, size } = req.body;
     if (!quantity)
       return res.render("pages/product", {
         user,
@@ -167,40 +189,71 @@ exports.addToCart = (req, res) => {
         product,
         similar,
         cart,
+        quantity,
+        colour,
+        size,
+      });
+    // console.log(req.body);
+    if (!colour)
+      return res.render("pages/product", {
+        user,
+        error: "Please Select a Colour",
+        product,
+        similar,
+        cart,
+        quantity,
+        colour,
+        size,
+      });
+    if (!size)
+      return res.render("pages/product", {
+        user,
+        error: "Please Select a Size",
+        product,
+        similar,
+        cart,
+        quantity,
+        colour,
+        size,
       });
     // console.log(cart);
     quantity = Math.abs(quantity);
     if (cart) {
       let updatedQty = false;
       cart = cart.map((each) => {
-        if (each._id == req.params._id) {
+        if (each.product._id == req.params._id) {
           each.quantity = parseInt(each.quantity) + parseInt(quantity);
           updatedQty = true;
         }
         return each;
       });
-      if (!updatedQty) cart.push({ _id: req.params._id, quantity });
-      res.cookie("cart", JSON.stringify(cart));
+      if (!updatedQty && cart.length == 1) return res.redirect("/my/cart");
+      else if (updatedQty) {
+      }
+      else cart = [{ product, quantity, colour, size }];
     } else {
-      res.cookie("cart", JSON.stringify([{ _id: req.params._id, quantity }]));
-      cart = [{ _id: req.params._id, quantity }];
+      cart = [{ product, quantity, colour, size }];
     }
-    res.render("pages/product", {
+    res.cookie("cart", JSON.stringify(cart)).render("pages/product", {
       user,
       message: "Added to Cart",
       product,
       similar,
       cart,
+      colour,
+      size,
     });
   } catch (err) {
     console.log(err);
-    res.cookie("cart", "[]");
-    res.render("pages/product", {
+    res.cookie("cart", "[]").render("pages/product", {
       user,
       error: "Something went Wrong",
       product,
       similar,
       cart,
+      quantity,
+      colour,
+      size,
     });
   }
 };

@@ -62,20 +62,7 @@
         }
     }
 </style>
-<script>
-  function prodChangeThumbnail(idx, url){
-    $("#prod-img").fadeOut();
-    $("#prod-img").fadeIn();
-    setTimeout(() => {
-      $(".prod-img")[0].src = url;
-    }, 400);
-    const list = $(".prod-imgs").toArray();
-    list.forEach((elem)=>{
-        elem.classList.remove("active");
-    });
-    list[idx].classList.add("active");
-  }
-</script>
+<script src="/js/product.js"></script>
 </head>
 <body>
   <%- include("../components/layout/navbar") %>
@@ -113,8 +100,9 @@
           <%- include("../components/product/rating") %>
           <p class="text-start font-semibold">Colours</p>
           <div class="flex flex-wrap justify-center space-x-1">
-           <%locals.product?.colours?.map((each)=>{%>
+           <%locals.product?.colours?.map((each, idx)=>{%>
                 <span
+                onclick="selectedProp(`colour`, <%=idx%>, `<%=each%>`);"
                 class="mx-1 mb-1 px-1 py-1 rounded-full font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease" style="border: 5px solid <%=each%>">
                     <%=each%>
                 </span>
@@ -122,8 +110,9 @@
           </div>
           <p class="text-start font-semibold">Sizes</p>
           <div class="flex flex-wrap justify-center space-x-1">
-           <%locals.product?.sizes?.map((each)=>{%>
+           <%locals.product?.sizes?.map((each, idx)=>{%>
                 <span
+                onclick="selectedProp(`size`, <%=idx%>, `<%=each%>`);"
                 class="px-1 py-1 rounded-full font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease" style="border:1px solid darkblue;color:darkblue;">
                     <%=each%>
                 </span>
@@ -137,12 +126,15 @@
              <form method="POST">
                 <input name="product" hidden value="<%=JSON.stringify(locals.product);%>">
                 <input name="similar" hidden value="<%=JSON.stringify(locals.similar);%>">
+                <input name="colour" id="colour" hidden value="<%=locals.colour%>">
+                <input name="size" id="size" hidden value="<%=locals.size%>">
                 <input
-                name="quantity"
-                type="number"
-                class="w-48 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                id="cart-Qty-Inp"
-                placeholder="Enter Quantity"
+                  name="quantity"
+                  type="number"
+                  value="<%=locals.quantity%>"
+                  class="w-48 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="cart-Qty-Inp"
+                  placeholder="Enter Quantity"
               />            
             <button class="ml-2 bg-orange-400 py-1.5 px-3 text-white">Add to Cart</button>
              </form>

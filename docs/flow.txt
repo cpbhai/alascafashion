@@ -1,7 +1,13 @@
-cart page
-cart ops
-Payment Gateway
+from monday
+
+cart modal input localStorage
+    after continue button
+        validate product price by id, validate checkout details, show error/razorpay
+            save order and redirect to home
+add product
+edit product
 fab contact
 Subscriber
 Emailing
-other pages
+other pages-terms , privacy, faqs, my/profile my/orders
+light house
