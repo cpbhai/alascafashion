@@ -153,14 +153,14 @@
     <p class="prod-heading font-bold mb-2 mt-10 text-center"><%=locals.product?.subcategory?.title%> that you may like</p>
     <div class="flex flex-wrap justify-evenly">
     <% locals.similar?.map((each)=>{ %>
-      <a href="/collection/product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+      <a href="/collection/product/<%=each._id%>" class="product-card rounded shadow-2xl my-2" title="<%=each.title%>, <%=each.description%>">
           <img class="w-full" src="<%=each.images[each.thumbnail].url;%>" alt="Sunset in the mountains">
           <div class="text-center p-1">
             <p class="truncate del"><%=each.title%></p>
             <p class="text-gray-700 text-base text-center">
               <span class="text-black-500">₹ <%=each.disCost%></span>
-              <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
-              <span class="text-green-500 ml-3 font-bold text-lg"><%=parseInt(100-(each.disCost*100/each.cost));%>%</span>
+              <span class="text-red-500 ml-1">₹ <del><%=each.cost%></del></span>
+              <span class="text-green-500 ml-1 font-bold text-lg"><%=parseInt(100-(each.disCost*100/each.cost));%>%</span>
             </p>
           </div>
       </a>

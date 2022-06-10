@@ -27,7 +27,7 @@ exports.get = (
     pipeline.push({ $sort: sortObj });
     if (sortBy == "latest") {
       sortObj.createdAt = -1;
-    } else if (sortBy == "oldest") {
+    } else if (sortBy == "default") {
       pipeline.pop();
     } else if (sortBy == "low-high") {
       sortObj.disCost = 1;

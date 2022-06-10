@@ -1,5 +1,7 @@
-Nav Renovation
-Products Filter
+cart page
+cart ops
 Payment Gateway
+fab contact
 Subscriber
 Emailing
+other pages

@@ -1,0 +1,22 @@
+a {
+  cursor: pointer;
+}
+.product-card {
+  width: 10rem;
+  cursor: pointer;
+}
+.disableLink {
+  cursor: not-allowed;
+}
+/* tab */
+@media (min-width: 40rem) {
+  .product-card {
+    width: 8.5rem;
+  }
+}
+/*lap */
+@media (min-width: 80rem) {
+  .product-card {
+    width: 15rem;
+  }
+}

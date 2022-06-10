@@ -1,40 +1,50 @@
 <%-  include("../components/layout/header")%>
 <meta name="description" content="Alasca Fashion, India's Leading Fashion Store for Suits, Lehengas, Gowns, Sarees and Much More On Exclusive Price" />
 <title>Products | Alasca Fashion</title>
-<style>
-    .product-card{
-        width: 10rem;
-        cursor: pointer;
-    }
-    .disableLink{
-      pointer-events: none;
-    }
-     /* tab */
-    @media (min-width: 40rem) {
-        .product-card {
-            width: 45rem;
-        }
-    }
-    /*lap */
-    @media (min-width: 80rem) {
-        .product-card {
-            width: 15rem;
-        }
-    }
-</style>
+<link rel="stylesheet" href="/css/products.css">
+<script src="/js/products.js"></script>
 </head>
 <body>
   <%- include("../components/layout/navbar") %>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item bg-white border border-gray-200">
+      <h2 class="accordion-header mb-0" id="headingOne">
+        <button class="
+          accordion-button
+          relative
+          flex
+          items-center
+          w-full
+          py-4
+          px-5
+          text-base text-gray-800 text-left
+          bg-white
+          border-0
+          rounded-none
+          transition
+          focus:outline-none
+        " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+          aria-controls="collapseOne">
+          Filter
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body py-4 px-5">
+          <%- include("../components/products/filters") %>
+      </div>
+    </div>
+  </div>
   <div class="flex flex-wrap justify-evenly">
     <% locals.data?.products?.map((each)=>{ %>
-        <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2">
+        <a href="product/<%=each._id%>" class="product-card rounded shadow-2xl my-2" title="<%=each.title%>, <%=each.description%>" >
             <img class="w-full" src="<%=each.images[each.thumbnail]?.url;%>" alt="Sunset in the mountains">
             <div class="text-center p-1">
               <p class="truncate del"><%=each.title%></p>
               <p class="text-gray-700 text-base text-center">
                 <span class="text-black-500">₹ <%=each.disCost%></span>
-                <span class="text-red-500 ml-3">₹ <del><%=each.cost%></del></span>
-                <span class="text-green-500 ml-3 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
+                <span class="text-red-500 ml-1">₹ <del><%=each.cost%></del></span>
+                <span class="text-green-500 ml-1 font-bold text-lg"><del><%=parseInt(100-(each.disCost*100/each.cost));%>%</del></span>
               </p>
             </div>
         </a>
@@ -43,21 +53,21 @@
   <div class="flex justify-center my-10">
     <nav aria-label="Page navigation example">
       <ul class="flex list-style-none">
-        <li class="page-item"><a
+        <li class="page-item" onclick="handleFilters(`page`,1);"><a
+          class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+          >First</a></li>
+        <li class="page-item" onclick="handleFilters(`page`,<%=locals.data.page-1%>,<%=locals.data?.page==1%>);"><a
           class="<%=locals.data?.page==1?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-          href="?sortBy=latest&page=1%>">First</a></li>
-        <li class="page-item"><a
-          class="<%=locals.data?.page==1?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-          href="?sortBy=latest&page=<%=locals.data?.page-1%>">Previous</a></li>
+          >Previous</a></li>
         <li class="page-item active"><a
             class="page-link relative block py-1.5 px-3 border-0 bg-blue-600 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
-            href="#"><%=locals.data?.page%></a></li>
-        <li class="page-item"><a
-            class="<%=locals.data?.page==locals.data?.noOfPages?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-            href="?sortBy=latest&page=<%=locals.data?.page+1%>">Next</a></li>
-        <li class="page-item<%=locals.data?.page==locals.data.noOfPages?` disableLink`:``%>"><a
+            ><%=locals.data?.page%></a></li>
+        <li class="page-item" onclick="handleFilters(`page`,<%=locals.data?.page+1%>,<%=locals.data?.page==locals.data?.noOfPages?true:false%>);">
+          <a class="<%=locals.data?.page==locals.data?.noOfPages?`disableLink `:``%>page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+            >Next</a></li>
+        <li class="page-item" onclick="handleFilters(`page`,<%=locals.data?.noOfPages%>);"><a
             class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-            href="?sortBy=latest&page=<%=locals.data?.noOfPages%>">Last</a></li>
+            >Last</a></li>
       </ul>
     </nav>
   </div>

@@ -183,6 +183,7 @@ exports.addToCart = (req, res) => {
       res.cookie("cart", JSON.stringify(cart));
     } else {
       res.cookie("cart", JSON.stringify([{ _id: req.params._id, quantity }]));
+      cart = [{ _id: req.params._id, quantity }];
     }
     res.render("pages/product", {
       user,
@@ -250,7 +251,12 @@ exports.get = async (req, res) => {
       response.page = page;
       response.noOfPages = 0;
     }
-    res.render("pages/products", { data: response, user, cart });
+    res.render("pages/products", {
+      data: response,
+      user,
+      cart,
+      params: req.query,
+    });
   } catch (err) {
     res.redirect("/");
   }

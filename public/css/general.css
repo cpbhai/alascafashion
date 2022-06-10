@@ -1,3 +1,21 @@
+.heightBelowNav {
+  height: 5.1rem;
+}
+.navnav {
+  /* background-color: red; */
+  position: relative;
+  -webkit-transition: all 0.55s ease;
+  -moz-transition: all 0.55s ease;
+  -ms-transition: all 0.55s ease;
+  -o-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+.leftNav {
+  left: -100vw;
+}
+.rightNav {
+  left: 0%;
+}
 .navbar-cart > i {
   margin: 16px auto auto 16px;
 }
@@ -12,9 +30,18 @@
 }
 /* tab */
 @media (min-width: 40rem) {
+  .heightBelowNav {
+    height: 5rem;
+  }
 }
 /*lap */
 @media (min-width: 80rem) {
+  .heightBelowNav {
+    height: 6rem;
+  }
+  .navnav {
+    position: relative;
+  }
   .navbar-cart > i {
     margin: auto auto auto 16px;
   }
