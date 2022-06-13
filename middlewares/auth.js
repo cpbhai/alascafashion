@@ -12,13 +12,34 @@ exports.fetchCart = (cart, res) => {
     return undefined;
   }
 };
-exports.isValidToken = (token, res) => {
-  if (!token) return false;
+exports.isValidToken = async (token, res) => {
   try {
-    const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    return user;
+    if (!token) throw { message: "Please Log In to access this Resource" };
+    // console.log(token)
+    return await jwt.verify(
+      token,
+      process.env.ACCESS_TOKEN_SECRET,
+      async function (err, decoded) {
+        // console.log(decoded)
+        try {
+          if (err) {
+            if (err.name == "TokenExpiredError")
+              throw new Error("Session Expired, Please Login Again.");
+            throw new Error("Invalid Token Provided, Please Log In Again.");
+          }
+          const user = await User.findById(decoded._id);
+          if (!user) throw new Error("Session Expired, Please Login Again.");
+          return user;
+        } catch (error) {
+          console.log(error);
+          res.clearCookie("token");
+          return undefined;
+        }
+      }
+    );
   } catch (err) {
-    if (res) res.cookie("token", null);
+    console.log(err);
+    res.clearCookie("token");
     return undefined;
   }
 };
@@ -58,6 +79,7 @@ exports.authorizeRoles = (...roles) => {
       return next();
     } catch (err) {
       const { message } = err;
+      // console.log("s", message)
       res.redirect("/");
     }
   };

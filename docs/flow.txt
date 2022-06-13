@@ -1,9 +1,3 @@
-from monday
-
-cart modal input localStorage
-    after continue button
-        validate product price by id, validate checkout details, show error/razorpay
-            save order and redirect to home
 add product
 edit product
 fab contact

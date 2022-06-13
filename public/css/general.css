@@ -1,5 +1,5 @@
 .heightBelowNav {
-  height: 5.1rem;
+  height: 5.5rem;
 }
 .navnav {
   /* background-color: red; */
@@ -31,13 +31,13 @@
 /* tab */
 @media (min-width: 40rem) {
   .heightBelowNav {
-    height: 5rem;
+    height: 5.2rem;
   }
 }
 /*lap */
 @media (min-width: 80rem) {
   .heightBelowNav {
-    height: 6rem;
+    height: 5.4rem;
   }
   .navnav {
     position: relative;

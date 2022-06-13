@@ -1,59 +1,90 @@
 const productModel = require("../models/product.model");
+const subcategoryModel = require("../models/subcategory.model");
 // const userModel = require("../models/user.model");
 // const subscriberModel = require("../models/subscriber-model");
 const { isValidToken, fetchCart } = require("../middlewares/auth");
-// const {
-//   addProduct,
-//   deleteProduct,
-//   updateProduct,
-// } = require("../middlewares/validatepayload");
+const {
+  addProduct,
+  // deleteProduct,
+  // updateProduct,
+} = require("../middlewares/validatePayload");
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Types;
 // const sendEmail = require("../utils/sendEmail");
 
+exports.addProductPage = async (req, res) => {
+  const user = await isValidToken(req.cookies.token, res);
+  const cart = fetchCart(req.cookies.cart, res);
+  const subcategories = await subcategoryModel
+    .find()
+    .select({ _id: 1, title: 1 });
+  res.render("pages/addProduct", { user, cart, subcategories });
+};
+
 exports.addProduct = async (req, res) => {
-  /*try {
-    req.body = await addProduct(req.body, req.user._id);
-    const product = await productModel.create(req.body);
-    const projectFields = {
-      images: product.images,
-      title: product.title,
-      _id: product._id,
-      thumbnail: product.thumbnail,
-    };
-    userModel.find({ role: "Client" }).exec((err, users) => {
-      if (err) return console.log("Error while sending mail-1", err);
-      users.map((each) => {
-        sendEmail("new-product", {
-          email: each.email,
-          product: projectFields,
-        });
-      });
-    });
-    subscriberModel.find().exec((err, users) => {
-      if (err) return console.log("Error while sending mail-2", err);
-      users.map((each) => {
-        sendEmail("new-product", {
-          email: each.email,
-          product: projectFields,
-        });
-      });
-    });
-    res.status(200).json({
-      success: true,
-      data: product,
+  const user = await isValidToken(req.cookies.token, res);
+  const cart = fetchCart(req.cookies.cart, res);
+  const subcategories = await subcategoryModel
+    .find()
+    .select({ _id: 1, title: 1 });
+  try {
+    req.body.category = ObjectId("62650572a8fc44666c191d7c");
+    const data = await addProduct(req.body, req.user._id);
+    console.log(req);
+    // const product = await productModel.create(data);
+    // const projectFields = {
+    //   images: product.images,
+    //   title: product.title,
+    //   _id: product._id,
+    //   thumbnail: product.thumbnail,
+    // };
+    // userModel.find({ role: "Client" }).exec((err, users) => {
+    //   if (err) return console.log("Error while sending mail-1", err);
+    //   users.map((each) => {
+    //     sendEmail("new-product", {
+    //       email: each.email,
+    //       product: projectFields,
+    //     });
+    //   });
+    // });
+    // subscriberModel.find().exec((err, users) => {
+    //   if (err) return console.log("Error while sending mail-2", err);
+    //   users.map((each) => {
+    //     sendEmail("new-product", {
+    //       email: each.email,
+    //       product: projectFields,
+    //     });
+    //   });
+    // });
+    // res.status(200).json({
+    //   success: true,
+    //   // data: product,
+    //   message: "Your Product is live now",
+    // });
+    res.render("pages/addProduct", {
+      user,
+      cart,
       message: "Your Product is live now",
+      formValues: data,
+      subcategories,
     });
   } catch (err) {
     if (req.body.images) {
+      console.log(err);
       const cloudinary = require("cloudinary");
       req.body.images.forEach((data) =>
         cloudinary.v2.uploader.destroy(data.public_id)
       );
     }
-    // console.log(err);
-    errorResponse(res, err);
-  }*/
+    // res.status(500).json({ success: false, message: err });
+    res.render("pages/addProduct", {
+      user,
+      cart,
+      error,
+      formValues: data,
+      subcategories,
+    });
+  }
 };
 
 exports.deleteProduct = async (req, res) => {
@@ -100,7 +131,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 exports.specific = async (req, res) => {
-  const user = isValidToken(req.cookies.token, res);
+  const user = await isValidToken(req.cookies.token, res);
   const cart = fetchCart(req.cookies.cart, res);
   try {
     if (!mongoose.isValidObjectId(req.params._id))
@@ -174,8 +205,14 @@ exports.specific = async (req, res) => {
   }
 };
 
-exports.addToCart = (req, res) => {
-  const user = isValidToken(req.cookies.token, res);
+exports.prodData = (req, res) => {
+  productModel.findById(req.params._id).then((data) => {
+    res.status(200).json({ success: true, data });
+  });
+};
+
+exports.addToCart = async (req, res) => {
+  const user = await isValidToken(req.cookies.token, res);
   let { product, similar } = req.body;
   product = JSON.parse(product);
   similar = JSON.parse(similar);
@@ -229,8 +266,7 @@ exports.addToCart = (req, res) => {
       });
       if (!updatedQty && cart.length == 1) return res.redirect("/my/cart");
       else if (updatedQty) {
-      }
-      else cart = [{ product, quantity, colour, size }];
+      } else cart = [{ product, quantity, colour, size }];
     } else {
       cart = [{ product, quantity, colour, size }];
     }
@@ -258,7 +294,7 @@ exports.addToCart = (req, res) => {
   }
 };
 exports.get = async (req, res) => {
-  const user = isValidToken(req.cookies.token, res);
+  const user = await isValidToken(req.cookies.token, res);
   const cart = fetchCart(req.cookies.cart, res);
   try {
     let {

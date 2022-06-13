@@ -1,22 +1,14 @@
 const { isValidToken, fetchCart } = require("../middlewares/auth");
 
-exports.cart = function (req, res) {
-  const user = isValidToken(req.cookies.token, res);
+exports.cart = async function (req, res) {
+  const user = await isValidToken(req.cookies.token, res);
   const cart = fetchCart(req.cookies.cart, res);
-  if (user) {
-    res.render("pages/cart", { user, cart });
-  } else {
-    res.render("pages/cart", { cart, user });
-  }
+  res.render("pages/cart", { user, cart });
 };
 
-exports.clearCart = function (req, res) {
-  res.cookie("cart", JSON.stringify([]))
-  const user = isValidToken([req.cookies.token], res);
+exports.clearCart = async function (req, res) {
+  res.cookie("cart", JSON.stringify([]));
+  const user = await isValidToken(req.cookies.token, res);
   const cart = fetchCart(JSON.stringify([]), res);
-  if (user) {
-    res.render("pages/cart", { user, cart });
-  } else {
-    res.render("pages/cart", { cart, user });
-  }
+  res.render("pages/cart", { user, cart });
 };

@@ -3,7 +3,7 @@ const { get } = require("./product.controller");
 const productModel = require("../models/product.model");
 
 module.exports = async function (req, res) {
-  const user = isValidToken(req.cookies.token, res);
+  const user = await isValidToken(req.cookies.token, res);
   const cart = fetchCart(req.cookies.cart, res);
   const products = await productModel.find().sort({ createdAt: -1 }).limit(10);
   //   console.log(user);

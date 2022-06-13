@@ -1,19 +1,14 @@
-function payment(
-  product = {
-    title: "Blue Saree",
-    _id: 1,
-    quantity: 2,
-    disCost: 100,
-    sizes: ["XL"],
-    size: 0,
-    colours: ["Red"],
-    colour: 0,
-  },
-  amount = 1000,
-  name = "Harsh",
-  phone = "8077015752"
+function gateway(
+  product,
+  size,
+  colour,
+  quantity,
+  amount,
+  name,
+  phone,
+  address
 ) {
-  const data = { currency: "INR", amount: amount * 100 };
+  const data = { currency: "INR", amount: 1 * 100 };
 
   const options = {
     key: "rzp_live_43gEiC95hG74ZX",
@@ -22,21 +17,28 @@ function payment(
     name: "Alasca Fashion",
     description: `${product.title.slice(0, 20)}...${product._id}`,
     handler: function (response) {
+      console.log(response);
       let payload = {
         payment_id: response.razorpay_payment_id,
-        quantity: product.quantity,
+        quantity,
         product: product._id,
         name,
         phone,
         address,
         disCost: product.disCost,
         otherDetails: {
-          size: product.sizes[product.size],
-          colour: product.colours[product.colour],
+          size,
+          colour,
           status: "Ordered",
         },
       };
-      //   dispatch(createOrder(payload));
+      $.post("/order/place", payload, function (response) {
+        if (response.success) Swal.fire("Thanks", response.message, "success");
+        // sendMail
+        setTimeout(() => {
+          window.open("/my/orders", "_self");
+        }, 5000);
+      });
     },
     prefill: {
       name,
@@ -47,4 +49,76 @@ function payment(
   };
   const paymentObject = new window.Razorpay(options);
   paymentObject.open();
+}
+
+function payment(payload) {
+  const name = $(`#shipping-name`).val(),
+    phone = $(`#shipping-phone`).val(),
+    state = $(`#shipping-state`).val(),
+    city = $(`#shipping-city`).val(),
+    streetAddr = $(`#shipping-streetAddr`).val(),
+    pincode = $(`#shipping-pincode`).val(),
+    landmark = $(`#shipping-landmark`).val();
+
+  if (!name) return Swal.fire("Oops", "Name is empty", "error");
+  if (!phone) return Swal.fire("Oops", "Phone is empty", "error");
+  if (!state) return Swal.fire("Oops", "State is empty", "error");
+  if (!city) return Swal.fire("Oops", "City is empty", "error");
+  if (!streetAddr) return Swal.fire("Oops", "Street Address is empty", "error");
+  if (!pincode) return Swal.fire("Oops", "PIN Code is empty", "error");
+  if (!landmark) return Swal.fire("Oops", "Landmark is empty", "error");
+  const address = {
+    state,
+    city,
+    pincode,
+    streetAddr,
+    landmark,
+  };
+  $.get(`/collection/product-data/${payload.product._id}`, function (response) {
+    const { success, data } = response;
+    let amount = data.disCost;
+    payload.quantity = isNaN(Number(payload.quantity))
+      ? 1
+      : parseInt(payload.quantity);
+    amount *= payload.quantity;
+    if (success) {
+      gateway(
+        data,
+        payload.size,
+        payload.colour,
+        payload.quantity,
+        amount,
+        name,
+        phone,
+        address
+      );
+    } else Swal.fire("Oops", "No such product was found", "error");
+  });
+}
+
+function shippingHandler(key) {
+  let shipping = localStorage.getItem("shippingInfo"),
+    value = $(`#shipping-${key}`).val();
+  if (shipping) {
+    shipping = JSON.parse(shipping);
+    shipping[`shipping-${key}`] = value;
+    console.log(shipping);
+    localStorage.setItem("shippingInfo", JSON.stringify(shipping));
+  } else {
+    localStorage.setItem(
+      "shippingInfo",
+      JSON.stringify({ [`shipping-${key}`]: value })
+    );
+  }
+}
+
+function initCart() {
+  let shipping = localStorage.getItem("shippingInfo");
+  if (shipping) {
+    shipping = JSON.parse(shipping);
+    const keys = Object.keys(shipping);
+    for (const k of keys) {
+      $(`#${k}`).val(shipping[k]);
+    }
+  }
 }

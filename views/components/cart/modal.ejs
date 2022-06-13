@@ -17,16 +17,83 @@
           class="text-xl font-medium leading-normal text-gray-800"
           id="exampleModalLabel"
         >
-          Modal title
+          Shipping Info
         </h5>
         <button
           type="button"
           class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
           data-bs-dismiss="modal"
           aria-label="Close"
-        >X</button>
+        >
+          X
+        </button>
       </div>
-      <div class="modal-body relative p-4">Modal body text goes here.</div>
+      <div class="modal-body relative p-4">
+        <div class="flex flex-wrap justify-evenly">
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-name"
+            placeholder="Name"
+            name="name"
+            onchange="shippingHandler(`name`);"
+          />
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-phone"
+            placeholder="Phone"
+            name="phone"
+            onchange="shippingHandler(`phone`);"
+          />
+        </div>
+        <div class="flex flex-wrap justify-evenly">
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-state"
+            placeholder="State"
+            name="state"
+            onchange="shippingHandler(`state`);"
+          />
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-city"
+            placeholder="City"
+            name="city"
+            onchange="shippingHandler(`city`);"
+          />
+        </div>
+        <div class="flex flex-wrap justify-evenly">
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-streetAddr"
+            placeholder="Street Address"
+            name="address"
+            onchange="shippingHandler(`streetAddr`);"
+          />
+          <input
+            type="text"
+            class="my-2 form-control w-32 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-pincode"
+            placeholder="PIN Code"
+            name="pincode"
+            onchange="shippingHandler(`pincode`);"
+          />
+        </div>
+        <div class="flex flex-wrap justify-evenly">
+          <input
+            type="text"
+            class="my-2 form-control mx-5 block px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            id="shipping-landmark"
+            placeholder="Landmark (Near Place)"
+            name="landmark"
+            onchange="shippingHandler(`landmark`);"
+          />
+        </div>
+      </div>
       <div
         class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md"
       >
@@ -38,8 +105,8 @@
           Close
         </button>
         <button
-        data-bs-dismiss="modal"
-        onclick="payment();"
+          "data-bs-dismiss=modal"
+          onclick="payment(<%=JSON.stringify(locals.cart[0])%>);"
           type="button"
           class="px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
         >

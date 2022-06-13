@@ -1,9 +1,10 @@
 const User = require("../models/user.model");
 const { isValidToken, fetchCart } = require("../middlewares/auth");
 
-exports.loginPage = (req, res) => {
+exports.loginPage = async (req, res) => {
   const cart = fetchCart(req.cookies.cart, res);
-  if (isValidToken(req.cookies.token, res)) {
+  const session = await isValidToken(req.cookies.token, res);
+  if (session) {
     return res.redirect("/");
   }
   res.render("pages/login", { cart });
@@ -31,9 +32,10 @@ exports.login = async (req, res) => {
     res.render("pages/login", { errors, formValues: req.body });
   }
 };
-exports.registerPage = (req, res) => {
+exports.registerPage = async (req, res) => {
   const cart = fetchCart(req.cookies.cart, res);
-  if (isValidToken(req.cookies.token, res)) {
+  const session = await isValidToken(req.cookies.token, res);
+  if (session) {
     return res.redirect("/");
   }
   res.render("pages/register", { cart });
@@ -60,7 +62,6 @@ exports.register = async (req, res) => {
   }
 };
 exports.logout = (req, res) => {
-  res.cookie("token", null);
-  res.redirect("/auth/login");
+  res.clearCookie("token").redirect("/auth/login");
 };
 // exports.login=(req, res)=>{}

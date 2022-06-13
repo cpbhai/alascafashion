@@ -1,0 +1,48 @@
+.addp-form{
+    /* background-color: red; */
+    /* height: 100vh; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    margin: 3em;
+}
+.addp-form >div{
+    /* border:2px solid blue; */
+}
+
+select {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid gray;
+  background-color: yellow;
+  width: 300px !important;
+}
+
+input[type="number"]{
+    width: 12em !important;
+}
+
+#file-input{
+    width: 15em;
+}
+
+#preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 300px;
+}
+
+#preview > img {
+  width: 60px;
+  object-fit: cover;
+}
+
+/* tab */
+@media (min-width: 40rem) {
+}
+/*lap */
+@media (min-width: 80rem) {
+}
