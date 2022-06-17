@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../../store/globalstate";
 import { ACTIONS } from "../../store/actions";
 
-function toast() {
+function Toast() {
   const { state, dispatch } = useContext(DataContext);
   const { notify } = state;
   const mapper = {
@@ -152,4 +152,4 @@ function svgs(params) {
     );
 }
 
-export default toast;
+export default Toast;

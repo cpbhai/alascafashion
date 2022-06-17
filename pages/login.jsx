@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Redirect, deleteCookies } from "../utils/hardcoded";
 import Loading from "../components/design/Loading";
 
-function login() {
+function Login() {
   const router = useRouter();
   const { dispatch } = useContext(DataContext);
   const [values, setValues] = useState({
@@ -118,4 +118,4 @@ export async function getServerSideProps(context) {
   return { props: {} };
 }
 
-export default login;
+export default Login;
