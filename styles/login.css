@@ -1,0 +1,21 @@
+.login_main_div {
+  margin-top: 2em;
+  /* border: 1px solid slateblue; */
+}
+
+.login_tile {
+  width: 32em;
+}
+
+/* tab */
+@media (min-width: 40rem) {
+  .login_main_div {
+    margin-top: 7em;
+  }
+}
+/*lap */
+@media (min-width: 80rem) {
+  .login_main_div {
+    margin-top: 7em;
+  }
+}
